@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="รวมงานที่เหมาะกับสุขภาพผู้สูงอายุ เลือกจังหวัด ช่วงอายุ และข้อจำกัดทางร่างกาย พร้อมช่องทางติดต่อ">
+<meta property="og:title" content="งานเหมาะวัยเก๋า"><meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%232b7a68'/%3E%3Cpath d='M50 78V48M50 48C50 32 38 24 22 24c0 16 12 24 28 24zM50 56c0-12 8-20 24-20 0 16-8 20-24 20z' fill='none' stroke='%23fff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<title>งานเหมาะวัยเก๋า</title>
+<style>
+:root{--bg:#f3f8f3;--card:#fff;--ink:#1f2a24;--mute:#4b5a52;--line:#cfe0d4;--accent:#2b7a68;--accent-ink:#fff;--soft:#e2f2ea;--warn:#fff1d2;--warn-ink:#5e4100;--hero1:#d6ecde;--hero2:#fbeed3;--fs:22px;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#131a16;--card:#1c2621;--ink:#f1f5ef;--mute:#bccbc1;--line:#34463b;--accent:#74d3b8;--accent-ink:#0b1b16;--soft:#21352c;--warn:#3a2f10;--warn-ink:#f2d58a;--hero1:#1e3a2f;--hero2:#3a3220;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#131a16;--card:#1c2621;--ink:#f1f5ef;--mute:#bccbc1;--line:#34463b;--accent:#74d3b8;--accent-ink:#0b1b16;--soft:#21352c;--warn:#3a2f10;--warn-ink:#f2d58a;--hero1:#1e3a2f;--hero2:#3a3220;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans Thai","Sarabun",system-ui,sans-serif;font-size:var(--fs);line-height:1.65}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+.wrap{max-width:980px;margin:0 auto;padding:12px 16px 56px}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:4px solid #e38b2c;outline-offset:3px}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:10px 0;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.bar b{font-size:1em}
+.fs{display:flex;gap:8px;align-items:center;font-size:.78em}
+.fs button{border:3px solid var(--accent);background:var(--card);color:var(--ink);border-radius:14px;min-width:64px;min-height:52px;font-weight:700}
+.hero{position:relative;overflow:hidden;border-radius:26px;padding:26px 22px;margin:6px 0 16px;background:linear-gradient(135deg,var(--hero1),var(--hero2))}
+.hero svg{position:absolute;right:-20px;bottom:-24px;width:230px;opacity:.55;pointer-events:none}
+.hero .big{font-size:2.2em;line-height:1}
+.hero h1{position:relative;font-size:1.55em;margin:8px 0 6px;line-height:1.35}
+.hero p{position:relative;margin:0;color:var(--mute);max-width:30em}
+.sub{color:var(--mute);margin:0}
+.notice{background:var(--warn);color:var(--warn-ink);border-radius:16px;padding:12px 16px;margin:16px 0;font-size:.82em;position:relative}
+
+.panel{background:var(--card);border:3px solid var(--line);border-radius:22px;padding:18px;margin:18px 0;box-shadow:0 4px 0 var(--line)}
+.panel h2{font-size:1.12em;margin:0;display:flex;align-items:center;gap:10px;line-height:1.4}
+.panel h2 small{font-weight:400;color:var(--mute);font-size:.7em}
+.ico{flex:none;display:inline-flex;width:2.1em;height:2.1em;border-radius:50%;background:var(--soft);align-items:center;justify-content:center;font-size:1em}
+.opts{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.opts label{display:inline-flex;align-items:center;gap:10px;border:3px solid var(--line);border-radius:16px;padding:10px 16px;cursor:pointer;min-height:58px;background:var(--bg)}
+.opts label .e{font-size:1.35em}
+.opts input{width:24px;height:24px;accent-color:var(--accent)}
+.opts label:has(input:checked){background:var(--soft);border-color:var(--accent);font-weight:700;box-shadow:0 0 0 2px var(--accent) inset}
+.opts label:has(input:focus-visible){outline:4px solid #e38b2c;outline-offset:2px}
+.count{font-weight:700;margin:22px 0 12px;font-size:1.1em;display:flex;align-items:center;gap:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px}
+.job{--c:#2b7a68;--cb:#e2f2ea;background:var(--card);border:3px solid var(--line);border-top:8px solid var(--c);border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.job[data-c=ex]{--c:#4a8fc4;--cb:#e0eefa}.job[data-c=home]{--c:#d9779b;--cb:#fbe5ee}.job[data-c=desk]{--c:#8a78c9;--cb:#ebe6f8}
+.job[data-c=svc]{--c:#e38b2c;--cb:#fdebd3}.job[data-c=sell]{--c:#c9a21f;--cb:#fbf1c9}.job[data-c=out]{--c:#4f9a4f;--cb:#e1f2de}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .job{--cb:#26332c}}
+:root[data-theme="dark"] .job{--cb:#26332c}
+.jt{display:flex;gap:12px;align-items:center}
+.jt .pic{flex:none;width:64px;height:64px;border-radius:20px;background:var(--cb);display:flex;align-items:center;justify-content:center;font-size:2.1em}
+.job h3{margin:0;font-size:1.08em;line-height:1.4}
+.job p{margin:0;color:var(--mute);font-size:.88em}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{background:var(--cb);border-radius:999px;padding:2px 12px;font-size:.75em}
+.lv{font-weight:700;font-size:.82em;color:var(--ink);background:var(--cb);border-radius:999px;padding:2px 12px;align-self:flex-start}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--accent);color:var(--accent-ink);border:0;border-radius:16px;padding:12px 18px;font-weight:700;text-decoration:none;min-height:58px;text-align:center}
+.btn.alt{background:var(--soft);color:var(--ink);border:3px solid var(--accent)}
+.job .btn{margin-top:auto}
+.pic{color:var(--c)}.pic svg{width:38px;height:38px}.opts .e{display:inline-flex}.opts .e svg{width:28px;height:28px;color:var(--accent)}
+.empty{padding:28px;text-align:center;color:var(--mute)}
+.empty .e{font-size:2.4em;display:block}
+dialog{border:3px solid var(--accent);border-radius:24px;padding:0;max-width:640px;width:calc(100% - 24px);background:var(--bg);color:var(--ink);font:inherit;font-size:var(--fs);max-height:92%}
+dialog::backdrop{background:rgba(10,20,15,.6)}
+.dh{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:14px 18px;background:linear-gradient(135deg,var(--hero1),var(--hero2));position:sticky;top:0}
+.dh h2{margin:0;font-size:1.1em;line-height:1.4}
+.db{padding:6px 18px 20px}
+.org{background:var(--card);border:3px solid var(--line);border-radius:18px;padding:14px;margin-top:14px}
+.org h3{margin:0 0 2px;font-size:1.05em}
+.org p{margin:0 0 10px;color:var(--mute);font-size:.82em}
+.acts{display:grid;gap:10px}
+.line{background:var(--soft);border-radius:14px;padding:10px 14px;font-size:.85em}
+select{font:inherit;min-height:58px;border:3px solid var(--accent);border-radius:16px;padding:8px 14px;background:var(--bg);color:var(--ink);min-width:min(100%,320px);max-width:100%}
+.sel{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:12px}
+.local{border-color:var(--accent)}.local h2{margin-bottom:6px}.local .acts{margin-top:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}.hint{background:var(--soft);border-radius:14px;padding:10px 14px;font-size:.85em;margin-top:12px}
+footer{margin-top:30px;color:var(--mute);font-size:.8em;text-align:center}
+.scam{background:var(--warn);color:var(--warn-ink);border-radius:18px;padding:14px 16px;margin-top:20px;font-size:.88em}
+.scam ul{margin:6px 0 0;padding-left:1.2em}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="bar">
+ <b>งานเหมาะวัยเก๋า</b>
+ <div class="fs" role="group" aria-label="ปรับขนาดตัวอักษร">ตัวอักษร
+  <button onclick="fs(-1)" aria-label="ลดขนาดตัวอักษร">ก −</button><button onclick="fs(1)" aria-label="เพิ่มขนาดตัวอักษร">ก +</button>
+ </div>
+</div>
+<div class="hero"><svg viewBox="0 0 200 160" aria-hidden="true"><circle cx="150" cy="50" r="34" fill="#f6c768"/><path d="M20 150C30 90 70 70 110 78c-4 40-30 70-90 72z" fill="#7bbf9a"/><path d="M90 150c0-40 25-62 60-64 4 36-18 62-60 64z" fill="#4f9a7c"/></svg><h1>หางานที่เหมาะกับสุขภาพของคุณ</h1><p>เลือกช่วงอายุและสิ่งที่ทำได้ลำบาก เราจะแสดงเฉพาะงานที่เหมาะสม แล้วกดดูช่องทางติดต่อได้ทันที</p></div>
+<div class="notice">ข้อมูลนี้เป็นแนวทางเบื้องต้น ไม่ใช่คำแนะนำทางการแพทย์ หากมีโรคประจำตัว ควรปรึกษาแพทย์ก่อนเริ่มงานทุกครั้ง</div>
+
+<section class="panel"><h2>1. พื้นที่ที่อยู่อาศัย</h2>
+ <p class="sub" style="font-size:.8em">เลือกจังหวัดของคุณ เพื่อดูหน่วยงานและช่องทางหางานใกล้บ้าน</p>
+ <div class="sel"><label for="prov" class="sub">จังหวัด</label><select id="prov"></select></div>
+</section>
+<div id="local"></div>
+<section class="panel"><h2>2. ช่วงอายุของคุณ</h2>
+ <div class="opts" id="age">
+  <label><input type="radio" name="age" value="60" checked>60–64 ปี</label>
+  <label><input type="radio" name="age" value="65">65–69 ปี</label>
+  <label><input type="radio" name="age" value="70">70–74 ปี</label>
+  <label><input type="radio" name="age" value="75">75 ปีขึ้นไป</label>
+ </div>
+</section>
+<section class="panel"><h2><span>3. สิ่งที่ทำได้ลำบาก <small>(เลือกได้หลายข้อ หรือไม่เลือกเลยก็ได้)</small></span></h2>
+ <div class="opts" id="lim">
+  <label><input type="checkbox" value="stand">ยืนหรือเดินนานไม่ไหว</label>
+  <label><input type="checkbox" value="lift">ยกของหนักไม่ได้</label>
+  <label><input type="checkbox" value="eye">สายตาไม่ดี/มือไม่ละเอียด</label>
+  <label><input type="checkbox" value="hear">ได้ยินไม่ชัด</label>
+  <label><input type="checkbox" value="screen">ไม่ถนัดคอมพิวเตอร์/มือถือ</label>
+  <label><input type="checkbox" value="out">ออกนอกบ้านลำบาก</label>
+ </div>
+</section>
+<section class="panel"><h2>4. หมวดหมู่งาน</h2>
+ <div class="opts" id="cat"></div>
+</section>
+
+<div class="count" id="count" aria-live="polite"></div>
+<div class="grid" id="list"></div>
+
+<div class="scam"><b> ระวังมิจฉาชีพ</b>
+ <ul><li>ไม่โอนค่าสมัคร ค่ามัดจำ หรือค่าชุดก่อนเห็นสัญญาจ้าง</li><li>ไม่บอกรหัส OTP หรือรหัสธนาคารกับใคร</li><li>กรมการจัดหางานเคยเตือนว่ามีเพจ Facebook ปลอมใช้ชื่อคล้ายกัน ไม่ขอประวัติส่วนตัวทาง Facebook หรือ Line</li><li>ไม่แน่ใจ โทร 1506 กด 2 หรือให้ลูกหลานช่วยตรวจสอบก่อน</li></ul></div>
+<footer><p> รวบรวมจากข้อมูลสาธารณะ เมื่อ 28 ตุลาคม 2569 ตำแหน่งว่างและเงื่อนไขเปลี่ยนได้ตลอด กรุณาตรวจสอบกับหน่วยงานอีกครั้งก่อนสมัคร เว็บไซต์นี้ไม่ได้เป็นตัวแทนของหน่วยงานหรือบริษัทที่ระบุไว้</p></footer>
+</div>
+
+<dialog id="dlg" aria-labelledby="dt"><div class="dh"><h2 id="dt"></h2><button class="btn alt" onclick="dlg.close()" aria-label="ปิด">ปิด ✕</button></div><div class="db" id="dbody"></div></dialog>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const fb=n=>"https://www.facebook.com/search/pages?q="+encodeURIComponent(n);
+const LINE=n=>`เปิดแอป LINE → ค้นหา “${n}” → เลือกบัญชีที่มีเครื่องหมายยืนยัน (โล่หรือป้ายเขียว)`;
+// ช่องทางติดต่อ: เบอร์โทรและเว็บไซต์เป็นข้อมูลที่ตรวจสอบแล้ว; Line/Facebook เป็นวิธีค้นหาบัญชีทางการ
+const O={
+doe:{n:"กรมการจัดหางาน (ไทยมีงานทำ)",d:"หางานจากนายจ้างทั่วประเทศ สมัครผ่านเว็บ แอป หรือสำนักงานจัดหางานจังหวัด",web:"https://xn--72c5abh2bf8icw0m9d.doe.go.th/",tel:[["1506 กด 2","1506,2"],["1694","1694"]],line:"กรมการจัดหางาน",fb:"กรมการจัดหางาน"},
+dop:{n:"กรมกิจการผู้สูงอายุ / สายด่วน พม.",d:"โครงการจ้างงานและกิจกรรมผู้สูงอายุ ประสานชมรมและศูนย์ในพื้นที่",web:"https://www.dop.go.th/",tel:[["1300 (24 ชม.)","1300"]],line:"กรมกิจการผู้สูงอายุ",fb:"กรมกิจการผู้สูงอายุ"},
+fund:{n:"กองทุนผู้สูงอายุ",d:"เงินกู้ประกอบอาชีพสำหรับผู้สูงอายุ",web:"https://olderfund.dop.go.th/",tel:[["02-354-6100 ต่อ 101-102","+6623546100,101"]],line:"กองทุนผู้สูงอายุ",fb:"กองทุนผู้สูงอายุ"},
+dsd:{n:"กรมพัฒนาฝีมือแรงงาน",d:"หลักสูตรฝึกอาชีพ เช่น อาหาร ช่าง การใช้สมาร์ทโฟน",web:"https://www.dsd.go.th/",tel:[["สายด่วนกระทรวงแรงงาน 1506","1506"]],line:"กรมพัฒนาฝีมือแรงงาน",fb:"กรมพัฒนาฝีมือแรงงาน"},
+free:{n:"แพลตฟอร์มคนทำงานอิสระ (กรมการจัดหางาน)",d:"เชื่อมผู้รับงานอิสระกับผู้ว่าจ้าง ทำตามเวลาที่สะดวก",web:"https://xn--42cg1chc4d5bxa3aob0a33a.doe.go.th/",tel:[["สายด่วนกรมการจัดหางาน 1694","1694"]],line:"กรมการจัดหางาน",fb:"กรมการจัดหางาน"},
+jt:{n:"JobThai",d:"ฝากประวัติ ตั้งแจ้งเตือนงานใหม่ ลองค้นคำว่า “ผู้สูงอายุ” หรือ “ไม่จำกัดอายุ”",web:"https://www.jobthai.com/",tel:[],line:"JobThai",fb:"JobThai"},
+grab:{n:"Grab (โครงการแกร็บวัยเก๋า)",d:"สำหรับผู้มีใบขับขี่และรถของตนเอง เลือกเวลาทำงานเองได้ อ่านวิธีสมัครที่ลิงก์ข่าว",web:"https://www.khaosod.co.th/sentangsedtee/?p=293150",tel:[],line:"Grab Thailand",fb:"Grab Thailand"},
+shop:{n:"ร้านค้าปลีกและบริการ",d:"รวมบริษัทที่รับผู้สูงอายุพร้อมวิธีสมัคร ควรโทรถามสาขาใกล้บ้านก่อน",web:"https://www.sanook.com/money/957387/",tel:[["สายด่วนกรมการจัดหางาน 1694","1694"]],line:"กรมการจัดหางาน",fb:"งานผู้สูงอายุ"}
+};
+const P={ex:'<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"/>',home:'<path d="M12 20s-8-5-8-11a4.5 4.5 0 0 1 8-2.5A4.5 4.5 0 0 1 20 9c0 6-8 11-8 11z"/>',desk:'<rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 20h20"/>',svc:'<circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-4 3-6 6-6s6 2 6 6M15 14c3 0 6 1.5 6 5"/>',sell:'<path d="M3 11h18a9 9 0 0 1-18 0z"/><path d="M8 7c0-2 2-2 2-4M13 7c0-2 2-2 2-4"/>',out:'<path d="M12 21V11"/><path d="M12 11C12 7 9 5 5 5c0 4 3 6 7 6zM12 13c0-3 2-5 6-5 0 4-2 5-6 5z"/>',all:'<rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/>'};
+const ic=k=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[k]}</svg>`;
+const C={ex:"ใช้ประสบการณ์/ให้ความรู้",home:"งานฝีมือที่บ้าน",desk:"งานนั่งทำ/ออนไลน์",svc:"งานบริการ/พบปะผู้คน",sell:"ทำอาหาร/ขายของ",out:"งานกลางแจ้ง/ใช้แรง"};
+const LV={1:" แรงเบา",2:" แรงปานกลาง",3:" ใช้แรงมาก"};
+// stand/lift/eye/hear/screen/out = งานนี้ต้องการสิ่งนั้น; max = กลุ่มอายุสูงสุดที่แนะนำ (60/65/70/75)
+const J=[
+{t:"วิทยากรถ่ายทอดประสบการณ์",d:"แบ่งปันความรู้จากอาชีพเดิมให้โรงเรียน ชุมชน หรือองค์กร",c:"ex",lv:1,hear:1,out:1,max:75,tags:["พาร์ทไทม์","ใช้ประสบการณ์"],o:["dop","doe"]},
+{t:"พี่เลี้ยง/ที่ปรึกษาอาสา",d:"ให้คำปรึกษาผู้ประกอบการรุ่นใหม่ ทั้งแบบพบหน้าหรือโทรศัพท์",c:"ex",lv:1,hear:1,max:75,tags:["ยืดหยุ่น","นั่งทำได้"],o:["dop","doe"]},
+{t:"ติวหนังสือ/สอนพิเศษ",d:"สอนวิชาที่ถนัด ภาษา ดนตรี หรือคณิตศาสตร์ ที่บ้านหรือออนไลน์",c:"ex",lv:1,hear:1,max:75,tags:["ที่บ้านได้","กำหนดเวลาเอง"],o:["free","jt"]},
+{t:"งานหัตถกรรมที่บ้าน",d:"จักสาน ทอผ้า ถักโครเชต์ ทำของที่ระลึกขายตลาดชุมชน",c:"home",lv:1,eye:1,max:75,tags:["ที่บ้านได้","ไม่ต้องใช้คอม"],o:["dop","dsd"]},
+{t:"ซ่อมและเย็บเสื้อผ้า",d:"รับแก้ผ้า เย็บเสื้อผ้า ปักลาย ต้องใช้สายตาและมือที่ละเอียด",c:"home",lv:1,eye:1,max:70,tags:["ที่บ้านได้","ใช้ฝีมือ"],o:["dsd","fund"]},
+{t:"เขียน แปล พิสูจน์อักษร",d:"รับงานเอกสาร บทความ หรือตรวจทานแบบฟรีแลนซ์",c:"desk",lv:1,screen:1,eye:1,max:75,tags:["ที่บ้านได้","นั่งทำได้"],o:["free","jt"]},
+{t:"ตอบแชทลูกค้า",d:"ดูแลข้อความและคำถามลูกค้าให้ร้านค้าออนไลน์ ทำเป็นกะสั้นๆ ได้",c:"desk",lv:1,screen:1,max:70,tags:["ที่บ้านได้","พาร์ทไทม์"],o:["free","jt"]},
+{t:"ผู้ช่วยงานธุรการ",d:"จัดเอกสาร รับโทรศัพท์ ดูแลแฟ้มข้อมูลในสำนักงานขนาดเล็ก",c:"desk",lv:1,screen:1,hear:1,out:1,max:70,tags:["พาร์ทไทม์","นั่งทำได้"],o:["doe","jt"]},
+{t:"งานต้อนรับ/ประชาสัมพันธ์",d:"ให้ข้อมูลที่ห้องสมุด พิพิธภัณฑ์ ศูนย์การเรียนรู้ หรือคลินิก",c:"svc",lv:1,hear:1,out:1,max:70,tags:["นั่งได้","พบปะผู้คน"],o:["doe","shop"]},
+{t:"ครูอาสา/ผู้ช่วยพี่เลี้ยงเด็ก",d:"เล่านิทาน สอนงานฝีมือ หรือช่วยดูแลเด็กที่ศูนย์เด็กเล็ก",c:"svc",lv:2,stand:1,lift:1,out:1,max:65,tags:["พาร์ทไทม์","พบปะผู้คน"],o:["dop","doe"]},
+{t:"ไกด์ท้องถิ่นชุมชน",d:"พานักท่องเที่ยวเดินชมชุมชนระยะสั้น เล่าเรื่องวัฒนธรรมและประวัติศาสตร์",c:"svc",lv:2,stand:1,hear:1,out:1,max:65,tags:["ได้เดิน","พบปะผู้คน"],o:["dop","doe"]},
+{t:"พนักงานร้านค้าปลีก (พาร์ทไทม์)",d:"ดูแลหน้าร้านหรือจัดสินค้า หลายแบรนด์เปิดรับผู้สูงอายุ ควรโทรถามสาขาใกล้บ้าน",c:"svc",lv:2,stand:1,lift:1,out:1,max:65,tags:["พาร์ทไทม์","ใกล้บ้าน"],o:["shop","doe"]},
+{t:"ขับรถรับส่ง (แกร็บวัยเก๋า)",d:"สำหรับผู้มีใบขับขี่และรถของตนเอง เลือกเวลาทำงานเองได้",c:"svc",lv:2,screen:1,eye:1,hear:1,out:1,max:65,tags:["กำหนดเวลาเอง","ต้องมีรถ"],o:["grab"]},
+{t:"ทำอาหารและขนมขาย",d:"ขนมไทย อาหารสุขภาพ รับออเดอร์ล่วงหน้าเพื่อไม่ต้องรีบ",c:"sell",lv:2,stand:1,max:70,tags:["ที่บ้านได้","รายได้เสริม"],o:["fund","dsd"]},
+{t:"แม่ค้า/ร้านค้าชุมชน",d:"ขายของหน้าบ้านหรือร้านเล็กๆ ในหมู่บ้าน เปิดปิดตามสะดวก",c:"sell",lv:2,stand:1,lift:1,max:70,tags:["ใกล้บ้าน","กำหนดเวลาเอง"],o:["fund","dop"]},
+{t:"ปลูกผักสวนครัวขายในชุมชน",d:"ปลูกผักกระถางหรือแปลงเล็ก ขายเพื่อนบ้านหรือตลาดนัด",c:"out",lv:2,stand:1,lift:1,max:70,tags:["ได้ออกกำลัง","ใกล้บ้าน"],o:["fund","dop"]},
+{t:"ดูแลสวนและตัดแต่งต้นไม้",d:"งานสวนเบาๆ ในบ้านหรือหมู่บ้าน ต้องใช้แรงและทนแดด",c:"out",lv:3,stand:1,lift:1,out:1,max:60,tags:["ใช้แรง","กลางแจ้ง"],o:["doe","dsd"]}
+];
+let cat="all";
+$('#cat').innerHTML=[["all","ทุกหมวด"],...Object.entries(C)].map(([k,v])=>`<label><span class="e">${ic(k)}</span><input type="radio" name="cat" value="${k}"${k==="all"?" checked":""}>${v}</label>`).join('');
+function render(){
+ const age=+$('input[name=age]:checked').value,cat=$('input[name=cat]:checked').value;
+ const lim=$$('#lim input:checked').map(i=>i.value);
+ const r=J.map((j,i)=>({j,i})).filter(({j})=>j.max>=age&&(cat==="all"||j.c===cat)&&!lim.some(k=>j[k]));
+ $('#count').textContent=r.length?`พบ ${r.length} งานที่เหมาะกับคุณ${$('#prov').value?' (ช่องทางในพื้นที่ '+pp($('#prov').value)+')':''}`:'';
+ $('#list').innerHTML=r.length?r.map(({j,i})=>`<article class="job" data-c="${j.c}"><div class="jt"><div class="pic">${ic(j.c)}</div><h3>${j.t}</h3></div><span class="lv">${LV[j.lv]} · ${C[j.c]}</span><p>${j.d}</p><div class="tags">${j.tags.map(x=>`<span class="tag">${x}</span>`).join('')}</div><button class="btn" onclick="openJob(${i})"> ดูช่องทางติดต่อ</button></article>`).join(''):'<div class="empty" style="grid-column:1/-1">ยังไม่พบงานที่ตรงเงื่อนไข ลองเปลี่ยนหมวดหมู่ หรือลดข้อจำกัดบางข้อดูนะคะ</div>';
+}
+function openJob(i){
+ const j=J[i];$('#dt').textContent=j.t;
+ $('#dbody').innerHTML=`<p class="sub">${j.d}</p>`+j.o.map(k=>{const o=O[k];return `<div class="org"><h3>${o.n}</h3><p>${o.d}</p><div class="acts">`+
+ `<a class="btn" href="${o.web}" target="_blank" rel="noopener noreferrer"> เปิดเว็บไซต์</a>`+
+ o.tel.map(t=>`<a class="btn alt" href="tel:${t[1].replace(/,/g,',')}"> โทร ${t[0]}</a>`).join('')+
+ `<div class="line"><b> Line:</b> ${LINE(o.line)}</div>`+
+ `<a class="btn alt" href="${fb(o.fb)}" target="_blank" rel="noopener noreferrer"> ค้นหาเพจ Facebook</a>`+
+ `</div></div>`}).join('')+(()=>{const p=$('#prov').value;return p?`<div class="org"><h3>งานนี้ในพื้นที่ ${pp(p)}</h3><p>ค้นหาตำแหน่งและสถานที่รับสมัครใกล้บ้านคุณ</p><div class="acts"><a class="btn" href="${gs(j.t+' '+p+' ผู้สูงอายุ รับสมัคร')}" target="_blank" rel="noopener noreferrer">ค้นหางาน “${j.t}” ใน${p}</a><a class="btn alt" href="${maps(j.t+' '+p)}" target="_blank" rel="noopener noreferrer">ดูสถานที่บนแผนที่</a><a class="btn alt" href="${maps('สำนักงานจัดหางาน'+pp(p))}" target="_blank" rel="noopener noreferrer">สำนักงานจัดหางานใกล้คุณ</a></div></div>`:`<div class="hint">เลือกจังหวัดที่ด้านบนของหน้าเว็บ เพื่อดูช่องทางหางานในพื้นที่ของคุณ</div>`})()+`<div class="scam">ก่อนติดต่อ: ไม่โอนเงินและไม่บอกรหัส OTP กับใคร หากเป็นเพจ Facebook หรือบัญชี Line ที่ไม่แน่ใจ ให้โทร 1506 กด 2 เพื่อตรวจสอบ</div>`;
+ dlg.showModal();
+}
+const REG={"กรุงเทพฯ และปริมณฑล":"กรุงเทพมหานคร,นนทบุรี,ปทุมธานี,สมุทรปราการ,นครปฐม,สมุทรสาคร","ภาคกลาง":"พระนครศรีอยุธยา,อ่างทอง,ลพบุรี,สิงห์บุรี,ชัยนาท,สระบุรี,นครนายก,สุพรรณบุรี,สมุทรสงคราม,ราชบุรี,กาญจนบุรี,เพชรบุรี,ประจวบคีรีขันธ์","ภาคตะวันออก":"ชลบุรี,ระยอง,จันทบุรี,ตราด,ฉะเชิงเทรา,ปราจีนบุรี,สระแก้ว","ภาคเหนือ":"เชียงใหม่,เชียงราย,ลำพูน,ลำปาง,แพร่,น่าน,พะเยา,แม่ฮ่องสอน,อุตรดิตถ์,ตาก,สุโขทัย,พิษณุโลก,พิจิตร,เพชรบูรณ์,กำแพงเพชร,นครสวรรค์,อุทัยธานี","ภาคตะวันออกเฉียงเหนือ":"นครราชสีมา,บุรีรัมย์,สุรินทร์,ศรีสะเกษ,อุบลราชธานี,ยโสธร,ชัยภูมิ,อำนาจเจริญ,บึงกาฬ,หนองบัวลำภู,ขอนแก่น,อุดรธานี,เลย,หนองคาย,มหาสารคาม,ร้อยเอ็ด,กาฬสินธุ์,สกลนคร,นครพนม,มุกดาหาร","ภาคใต้":"นครศรีธรรมราช,กระบี่,พังงา,ภูเก็ต,สุราษฎร์ธานี,ระนอง,ชุมพร,สงขลา,สตูล,ตรัง,พัทลุง,ปัตตานี,ยะลา,นราธิวาส"};
+$('#prov').innerHTML='<option value="">-- เลือกจังหวัด --</option>'+Object.entries(REG).map(([r,l])=>`<optgroup label="${r}">${l.split(',').map(p=>`<option>${p}</option>`).join('')}</optgroup>`).join('');
+const maps=q=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q),gs=q=>"https://www.google.com/search?q="+encodeURIComponent(q);
+const BKK="กรุงเทพมหานคร",pp=p=>p===BKK?p:"จังหวัด"+p;
+function renderLocal(){
+ const p=$('#prov').value,el=$('#local');
+ if(!p){el.innerHTML='';render();return}
+ const soc=p===BKK?"สำนักพัฒนาสังคม กรุงเทพมหานคร":"สำนักงานพัฒนาสังคมและความมั่นคงของมนุษย์"+pp(p);
+ const L=[["สำนักงานจัดหางาน"+pp(p)+" (แผนที่)",maps("สำนักงานจัดหางาน"+pp(p))],[soc+" (แผนที่)",maps(soc)],["สถาบัน/ศูนย์พัฒนาฝีมือแรงงาน "+p+" ฝึกอาชีพ (แผนที่)",maps("สถาบันพัฒนาฝีมือแรงงาน "+p)],["ค้นหาตำแหน่งงานผู้สูงอายุใน"+p,gs("งานผู้สูงอายุ "+p+" รับสมัคร")],["ค้นหาเพจ Facebook จัดหางาน"+p,fb("สำนักงานจัดหางาน"+pp(p))]];
+ el.innerHTML=`<section class="panel local"><h2>งานและช่องทางในพื้นที่ ${pp(p)}</h2><p class="sub" style="font-size:.82em">ปุ่มด้านล่างพาไปยังหน่วยงานและผลค้นหาในจังหวัดของคุณ</p><div class="acts">`+L.map(x=>`<a class="btn alt" href="${x[1]}" target="_blank" rel="noopener noreferrer">${x[0]}</a>`).join('')+`<a class="btn" href="tel:1506,2">โทรสอบถามงาน 1506 กด 2</a><a class="btn" href="tel:1300">โทร 1300 (กิจกรรมผู้สูงอายุ)</a></div><div class="hint">เบอร์สำนักงานประจำจังหวัดเปลี่ยนได้ ให้ดูเบอร์ล่าสุดจากหน้าแผนที่ หรือโทร 1506 กด 2 แล้วแจ้งชื่อจังหวัด</div></section>`;
+ render();
+}
+$('#prov').addEventListener('change',renderLocal);
+const dlg=$('#dlg');
+$$('input').forEach(i=>i.addEventListener('change',render));
+let size=22;function fs(d){size=Math.min(32,Math.max(18,size+d*2));document.documentElement.style.setProperty('--fs',size+'px')}
+render();
+</script>
+</body>
+</html>
