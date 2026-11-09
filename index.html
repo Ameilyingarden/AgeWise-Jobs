@@ -5,9 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="ระบบค้นหางานที่เหมาะกับผู้สูงอายุ 60 ปีขึ้นไป คัดตามสุขภาพ ข้อจำกัดร่างกาย และจังหวัด พร้อมช่องทางสมัคร">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%232b7a68'/%3E%3Cpath d='M50 78V48M50 48C50 32 38 24 22 24c0 16 12 24 28 24zM50 56c0-12 8-20 24-20 0 16-8 20-24 20z' fill='none' stroke='%23fff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;700&display=swap" rel="stylesheet">
 <title>งานเหมาะวัยเก๋า</title>
 <style>
-:root{--bg:#f3f8f3;--card:#fff;--ink:#1f2a24;--mute:#4b5a52;--line:#cfe0d4;--accent:#2b7a68;--accent-ink:#fff;--soft:#e2f2ea;--warn:#fff1d2;--warn-ink:#5e4100;--hero1:#d6ecde;--hero2:#fbeed3;--fs:22px;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+:root{--bg:#f6faf1;--card:#fff;--ink:#1f2a24;--mute:#4b5a52;--line:#cfe3d2;--accent:#1b7f44;--accent-ink:#fff;--soft:#e3f3e6;--warn:#fff1d2;--warn-ink:#5e4100;--hero1:#d6ecde;--hero2:#fbeed3;--fs:22px;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#131a16;--card:#1c2621;--ink:#f1f5ef;--mute:#bccbc1;--line:#34463b;--accent:#74d3b8;--accent-ink:#0b1b16;--soft:#21352c;--warn:#3a2f10;--warn-ink:#f2d58a;--hero1:#1e3a2f;--hero2:#3a3220;color-scheme:dark}}
 :root[data-theme="dark"]{--bg:#131a16;--card:#1c2621;--ink:#f1f5ef;--mute:#bccbc1;--line:#34463b;--accent:#74d3b8;--accent-ink:#0b1b16;--soft:#21352c;--warn:#3a2f10;--warn-ink:#f2d58a;--hero1:#1e3a2f;--hero2:#3a3220;color-scheme:dark}
 html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
@@ -86,29 +87,130 @@ footer{margin-top:30px;color:var(--mute);font-size:.8em;text-align:center}
 .grp{font-size:1.1em;margin:26px 0 8px}.btns{display:grid;gap:8px;margin-top:auto}
 details{background:var(--bg);border:2px solid var(--line);border-radius:12px;padding:6px 12px;margin-top:8px;font-size:.85em}summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;align-items:center}
 .sel label.sub{font-size:.9em}
+.wrap{padding-bottom:110px}
+.chatfab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:20;min-height:64px;padding:0 26px;border:0;border-radius:999px;background:var(--accent);color:var(--accent-ink);font-weight:700;box-shadow:0 6px 18px rgba(0,0,0,.28)}
+.chat{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:21;width:min(440px,calc(100vw - 32px));height:min(700px,calc(100dvh - 32px - env(safe-area-inset-bottom,0px) - env(safe-area-inset-top,0px)));display:flex;flex-direction:column;background:var(--bg);color:var(--ink);border:3px solid var(--accent);border-radius:22px;box-shadow:0 10px 30px rgba(0,0,0,.35);overflow:hidden}
+.chat[hidden]{display:none}
+@media (max-width:600px){.chat{left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom,0px));width:auto;height:calc(100dvh - 16px - env(safe-area-inset-bottom,0px) - env(safe-area-inset-top,0px))}}
+.ch-h{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 14px;background:linear-gradient(135deg,var(--hero1),var(--hero2))}
+.ch-h b{font-size:1em;line-height:1.3}
+.ch-b{font:inherit;font-size:.78em;min-height:48px;padding:0 14px;border:3px solid var(--accent);border-radius:14px;background:var(--card);color:var(--ink);font-weight:700;margin-left:6px}
+.ch-n{font-size:.72em;color:var(--mute);padding:6px 14px;border-bottom:2px solid var(--line)}
+.ch-log{flex:1;overflow-y:auto;padding:6px 12px;-webkit-overflow-scrolling:touch}
+.m{max-width:94%;padding:10px 14px;border-radius:18px;margin:10px 0;font-size:.88em;line-height:1.6;overflow-wrap:anywhere}
+.m.b{background:var(--card);border:2px solid var(--line);border-bottom-left-radius:4px}
+.m.u{margin-left:auto;background:var(--accent);color:var(--accent-ink);border-bottom-right-radius:4px}
+.m a{color:var(--accent);font-weight:700;text-decoration:underline}
+.m .cg{margin:8px 0 0;padding:8px 10px;background:var(--soft);border-radius:12px}
+.m .cb{display:inline-flex;align-items:center;margin:6px 6px 0 0;min-height:48px;padding:0 14px;border:3px solid var(--accent);border-radius:14px;background:var(--soft);color:var(--ink);font:inherit;font-size:.9em;font-weight:700;text-decoration:none}
+.ch-chips{display:flex;flex-wrap:wrap;gap:8px;padding:6px 12px 2px;max-height:34%;overflow-y:auto}
+.chip{font:inherit;font-size:.76em;min-height:48px;padding:0 14px;border:3px solid var(--accent);border-radius:999px;background:var(--card);color:var(--ink);font-weight:700}
+.ch-in{display:flex;gap:8px;padding:10px 12px}
+.ch-in input{flex:1;min-width:0;font:inherit;min-height:56px;padding:0 14px;border:3px solid var(--accent);border-radius:16px;background:var(--card);color:var(--ink)}
+.ch-in .btn{min-width:84px}
+
+:root{--bg2:#fff6df;--sun:#f5b82e;--orange:#f08a3c;--sh:0 6px 18px rgba(27,127,68,.12)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg2:#1a2318}}
+:root[data-theme="dark"]{--bg2:#1a2318}
+body{font-family:"Sarabun","Noto Sans Thai",system-ui,sans-serif;background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%) fixed;min-height:100%}
+.skip{position:absolute;left:-999px;top:8px;z-index:50;background:var(--accent);color:var(--accent-ink);padding:12px 18px;border-radius:12px}.skip:focus{left:8px}
+.brand{display:flex;align-items:center;gap:8px;font-size:1.05em}.brand svg{width:34px;height:34px;color:var(--accent);flex:none}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes bob{0%,100%{transform:translateY(0);opacity:.6}50%{transform:translateY(-12px);opacity:1}}
+.btn{background:linear-gradient(135deg,var(--accent),#2a9d5c);transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(27,127,68,.25)}
+.btn.alt{background:var(--card)}.btn.alt:hover{background:var(--soft)}
+.btn.sun{background:linear-gradient(135deg,#ffcd57,#f5a623);color:#3b2a00;border:0}
+.btn[disabled]{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:12px;align-items:center;padding:28px 24px;border-radius:30px;box-shadow:var(--sh);animation:fadeUp .6s ease both}
+.hero svg.art{position:static;width:100%;max-width:400px;justify-self:center;opacity:1}
+.hero h1{font-size:1.7em}
+.hbtn{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.stats{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}.stats div{background:var(--card);border-radius:16px;padding:6px 14px;font-size:.78em;box-shadow:var(--sh);text-align:center}.stats b{display:block;font-size:1.3em;color:var(--accent);line-height:1.2}
+@media (max-width:700px){.hero{grid-template-columns:1fr}.hero svg.art{order:-1;max-width:300px}}
+.wiz{margin:20px 0}
+.wz-top{background:var(--card);border:2px solid var(--line);border-radius:22px;padding:14px 18px;box-shadow:var(--sh)}
+.wz-title{font-weight:700}
+.prog{height:14px;border-radius:99px;background:var(--soft);overflow:hidden;margin:10px 0}
+.prog i{display:block;height:100%;width:20%;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--sun));transition:width .5s ease}
+.dots{display:flex;justify-content:space-between;list-style:none;margin:0;padding:0;gap:4px}
+.dots li{flex:1;text-align:center;font-size:.62em;color:var(--mute);line-height:1.3}
+.dots li b{display:flex;width:2.6em;height:2.6em;margin:0 auto 2px;border-radius:50%;align-items:center;justify-content:center;background:var(--soft);color:var(--accent);transition:background .3s}
+.dots li.on b{background:var(--accent);color:var(--accent-ink)}.dots li.on{color:var(--ink);font-weight:700}.dots li.done b{background:var(--sun);color:#3b2a00}
+.dots svg{width:60%;height:60%}
+.step{animation:fadeUp .45s ease both;box-shadow:var(--sh)}.step[hidden]{display:none}
+.hi{display:inline-flex;width:2.2em;height:2.2em;border-radius:50%;background:var(--soft);color:var(--accent);align-items:center;justify-content:center;flex:none}.hi svg{width:60%;height:60%}
+.step h3{margin:18px 0 0;font-size:1em}
+.qbs{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.qb{font:inherit;min-height:56px;padding:0 20px;border-radius:999px;border:3px solid var(--line);background:var(--card);color:var(--ink);font-weight:700;cursor:pointer;transition:transform .2s,background .25s,border-color .25s}
+.qb:hover{transform:translateY(-2px);border-color:var(--accent)}.qb.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:12px}
+.opts .tile{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px;padding:14px 8px;min-height:116px;border-radius:20px;background:var(--card);border:3px solid var(--line);cursor:pointer;transition:transform .2s,box-shadow .2s,background .25s,border-color .25s}
+.tile input{position:absolute;opacity:0;width:1px;height:1px}
+.tile .ti{width:54px;height:54px;border-radius:50%;background:var(--soft);color:var(--accent);display:flex;align-items:center;justify-content:center;transition:background .25s,color .25s}.tile .ti svg{width:30px;height:30px}
+.tile .tt{font-size:.82em;line-height:1.35}
+.opts .tile:hover{transform:translateY(-3px);box-shadow:var(--sh);border-color:var(--accent)}
+.opts .tile:has(input:checked){background:linear-gradient(160deg,var(--soft),var(--card));border-color:var(--accent);box-shadow:0 0 0 3px var(--accent) inset;font-weight:700}
+.tile:has(input:checked) .ti{background:var(--accent);color:var(--accent-ink)}
+.tile:has(input:checked)::after{content:"\2713";position:absolute;top:8px;right:10px;width:26px;height:26px;border-radius:50%;background:var(--sun);color:#3b2a00;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:.8em}
+.opts .tile:has(input:focus-visible){outline:4px solid var(--orange);outline-offset:3px}
+.wz-nav{display:flex;gap:12px;margin-top:6px}.wz-nav .btn{flex:1;font-size:1.05em}.wz-nav[hidden],.steps[hidden]{display:none}
+.loading{background:var(--card);border-radius:24px;padding:40px 20px;text-align:center;box-shadow:var(--sh);margin-top:14px;animation:fadeUp .4s ease both}.loading[hidden]{display:none}
+.spin{display:flex;gap:12px;justify-content:center;margin-bottom:14px}.spin i{width:18px;height:18px;border-radius:50%;background:var(--accent);animation:bob 1.4s ease-in-out infinite}.spin i:nth-child(2){background:var(--sun);animation-delay:.2s}.spin i:nth-child(3){background:var(--orange);animation-delay:.4s}
+.sumcard{display:grid;grid-template-columns:auto 1fr;gap:16px;padding:20px;border-radius:26px;background:linear-gradient(135deg,var(--hero1),var(--hero2));box-shadow:var(--sh);margin:18px 0;animation:fadeUp .5s ease both}
+.sumcard h2{margin:0 0 6px;font-size:1.2em}.si{width:76px;height:76px;border-radius:50%;background:var(--card);color:var(--accent);display:flex;align-items:center;justify-content:center;box-shadow:var(--sh)}.si svg{width:44px;height:44px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.chips span{background:var(--card);border:2px solid var(--line);border-radius:999px;padding:3px 14px;font-size:.78em}
+.sumbtn{display:flex;flex-wrap:wrap;gap:10px}.sumbtn .btn{min-height:52px;font-size:.85em}
+@media (max-width:600px){.sumcard{grid-template-columns:1fr}}
+.grid{gap:20px}
+.job{padding:0;overflow:hidden;gap:0;border:2px solid var(--line);border-top:2px solid var(--line);border-radius:24px;box-shadow:var(--sh);transition:transform .25s ease,box-shadow .25s ease;animation:fadeUp .5s ease both;animation-delay:calc(var(--i,0)*60ms)}
+.job:hover{transform:translateY(-5px);box-shadow:0 14px 28px rgba(27,127,68,.18)}
+.job.good{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent),var(--sh)}.job.warn{border-color:var(--orange)}
+.jb{position:relative;height:108px;background:linear-gradient(135deg,var(--cb),var(--card));display:flex;align-items:center;justify-content:center;overflow:hidden}
+.jb::before{content:"";position:absolute;width:150px;height:150px;border-radius:50%;background:var(--c);opacity:.14;right:-30px;top:-55px}
+.jb::after{content:"";position:absolute;width:90px;height:90px;border-radius:50%;background:var(--sun);opacity:.25;left:-20px;bottom:-40px}
+.jbi{position:relative;z-index:1;width:70px;height:70px;border-radius:22px;background:var(--card);color:var(--c);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,.12)}.jbi svg{width:40px;height:40px}
+.fit{position:absolute;top:10px;left:10px;z-index:2;padding:3px 14px;border-radius:999px;font-size:.72em;font-weight:700}
+.fit.good{background:var(--accent);color:var(--accent-ink)}.fit.warn{background:var(--orange);color:#3b1d00}.fit.pend{background:var(--warn);color:var(--warn-ink)}
+.jb .mono{position:absolute;right:12px;bottom:10px;width:44px;height:44px;border-radius:14px;font-size:1em;z-index:2;box-shadow:0 3px 8px rgba(0,0,0,.2)}
+.jbody{padding:16px 18px 18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.cat{display:inline-flex;align-items:center;gap:6px;background:var(--cb);border-radius:999px;padding:3px 12px;font-size:.76em;font-weight:700;align-self:flex-start}.cat svg{width:1.3em;height:1.3em;color:var(--c)}
+.job .btns .btn.sun{min-height:60px;font-size:1em}
+.wrap{padding-bottom:120px}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
+<a class="skip" href="#wizard">ข้ามไปเนื้อหาหลัก</a>
 <div class="wrap">
-<div class="bar"><b>งานเหมาะวัยเก๋า</b><div class="fs" role="group" aria-label="ปรับขนาดตัวอักษร">ตัวอักษร<button onclick="fs(-1)" aria-label="ลดขนาดตัวอักษร">ก −</button><button onclick="fs(1)" aria-label="เพิ่มขนาดตัวอักษร">ก +</button></div></div>
-<div class="hero"><svg viewBox="0 0 200 160" aria-hidden="true"><circle cx="150" cy="50" r="34" fill="#f6c768"/><path d="M20 150C30 90 70 70 110 78c-4 40-30 70-90 72z" fill="#7bbf9a"/><path d="M90 150c0-40 25-62 60-64 4 36-18 62-60 64z" fill="#4f9a7c"/></svg><h1>ยินดีต้อนรับสู่ระบบค้นหางานที่เหมาะสมกับคุณ</h1><p>เราจะช่วยค้นหางานที่ตรงกับความสามารถ สุขภาพ และพื้นที่ที่คุณต้องการทำงาน เพื่อให้คุณสามารถทำงานและสร้างรายได้อย่างมีความสุข</p></div>
+<div class="bar"><b class="brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#e3f3e6" stroke="none"/><path d="M7 17c0-6 3-9 10-10 0 7-3 10-10 10zM7 17l5-5"/></svg>งานเหมาะวัยเก๋า</b><div class="fs" role="group" aria-label="ปรับขนาดตัวอักษร">ตัวอักษร<button onclick="fs(-1)" aria-label="ลดขนาดตัวอักษร">ก −</button><button onclick="fs(1)" aria-label="เพิ่มขนาดตัวอักษร">ก +</button></div></div>
+<div class="hero"><div class="ht"><h1>ยินดีต้อนรับสู่ระบบค้นหางานที่เหมาะสมกับคุณ</h1><p>เราจะช่วยค้นหางานที่ตรงกับความสามารถ สุขภาพ และพื้นที่ที่คุณต้องการทำงาน เพื่อให้คุณสามารถทำงานและสร้างรายได้อย่างมีความสุข</p><div class="hbtn"><button class="btn sun" onclick="wzEdit(1)">เริ่มหางานที่เหมาะกับฉัน</button><button class="btn alt" onclick="chatToggle(true)">คุยกับผู้ช่วยหางาน</button></div><div class="stats" id="stats"></div></div><svg class="art" viewBox="0 0 360 280" role="img" aria-label="ภาพประกอบผู้สูงอายุสองท่านกำลังทำงานอย่างมีความสุข"><ellipse cx="180" cy="258" rx="172" ry="20" fill="#b9e3c6"/><circle cx="300" cy="52" r="32" fill="#ffd166"/><circle cx="300" cy="52" r="44" fill="#ffd166" opacity=".25"/><path d="M14 250c6-40 30-62 56-66-2 34-22 58-56 66z" fill="#7bbf9a"/><path d="M52 250c-2-30 12-50 34-56 4 28-10 48-34 56z" fill="#4f9a7c"/><rect x="62" y="176" width="240" height="78" rx="14" fill="#fff" stroke="#8fcfa6" stroke-width="3"/><rect x="54" y="166" width="256" height="18" rx="9" fill="#f5b82e"/><rect x="100" y="126" width="62" height="56" rx="22" fill="#1b7f44"/><rect x="113" y="142" width="36" height="40" rx="8" fill="#fff3c4"/><circle cx="131" cy="98" r="26" fill="#f3cfa8"/><path d="M105 94c2-22 52-22 54 0-9-9-45-9-54 0z" fill="#e8e8ee"/><circle cx="123" cy="98" r="2.6" fill="#4a3322"/><circle cx="139" cy="98" r="2.6" fill="#4a3322"/><circle cx="116" cy="108" r="5" fill="#f7a8a0" opacity=".6"/><circle cx="146" cy="108" r="5" fill="#f7a8a0" opacity=".6"/><path d="M121 107q10 9 20 0" stroke="#7a4a2a" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M158 146q20 10 30-4" stroke="#f3cfa8" stroke-width="12" fill="none" stroke-linecap="round"/><rect x="184" y="132" width="24" height="28" rx="6" fill="#fff" stroke="#f08a3c" stroke-width="3"/><path d="M191 124q-3-6 0-10M200 124q-3-6 0-10" stroke="#f08a3c" stroke-width="2.5" fill="none" stroke-linecap="round"/><rect x="214" y="130" width="62" height="54" rx="22" fill="#f08a3c"/><rect x="226" y="148" width="24" height="13" rx="3" fill="#fff"/><circle cx="245" cy="102" r="25" fill="#f3cfa8"/><path d="M220 98c2-21 50-21 52 0-9-8-43-8-52 0z" fill="#fff"/><circle cx="236" cy="104" r="7" fill="none" stroke="#4a3322" stroke-width="2.4"/><circle cx="254" cy="104" r="7" fill="none" stroke="#4a3322" stroke-width="2.4"/><path d="M243 104h3" stroke="#4a3322" stroke-width="2.4"/><path d="M236 116q9 8 18 0" stroke="#7a4a2a" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M272 146q20-4 22-34" stroke="#f3cfa8" stroke-width="11" fill="none" stroke-linecap="round"/><path d="M60 40l4 9 10 1-7 7 2 10-9-5-9 5 2-10-7-7 10-1z" fill="#f5b82e" opacity=".8"/><path d="M330 130l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z" fill="#f08a3c" opacity=".7"/></svg></div>
 <div class="notice">ข้อมูลนี้เป็นแนวทางเบื้องต้น ไม่ใช่การวินิจฉัยหรือรับรองความปลอดภัยทางการแพทย์ หากมีโรคประจำตัว ควรปรึกษาแพทย์ และตรวจสอบตำแหน่งว่างกับนายจ้างก่อนเดินทางไปสมัคร</div>
 
-<section class="panel"><h2>1. จังหวัดที่ต้องการทำงาน</h2><div class="sel"><label for="prov" class="sub">จังหวัด</label><select id="prov"></select></div>
-<p class="sub" style="font-size:.78em;margin-top:8px">ฐานข้อมูลยังไม่มีข้อมูลระดับอำเภอและระยะทาง จึงคัดกรองตามจังหวัดและรายชื่อสาขาที่มีเท่านั้น</p></section>
-<section class="panel"><h2>2. อายุและวุฒิการศึกษา</h2><div class="sel"><label for="age" class="sub">อายุปัจจุบัน</label><select id="age"></select><label for="edu" class="sub">วุฒิสูงสุด</label><select id="edu"><option value="1">ต่ำกว่า ป.6</option><option value="2">ป.6</option><option value="3" selected>ม.3</option><option value="4">ม.6 / ปวช.</option><option value="5">ปวส. / อนุปริญญา</option><option value="6">ปริญญาตรีขึ้นไป</option></select></div></section>
-<section class="panel"><h2>3. ข้อจำกัดทางร่างกาย <small>(เลือกได้หลายข้อ)</small></h2><div class="opts" id="lim"></div></section>
-<section class="panel"><h2>4. สิ่งที่คุณทำได้ <small>(เอาเครื่องหมายออกหากทำไม่ได้)</small></h2><div class="opts" id="abl"></div>
-<div class="opts" id="wt"></div></section>
-<section class="panel"><h2>5. ประเภทงานที่สนใจ</h2><div class="opts" id="cat"></div></section>
-
-<div id="local"></div>
-<div class="count" id="count" aria-live="polite"></div>
-<div id="sim"></div>
-<div id="res"></div>
+<section id="wizard" class="wiz" aria-label="เลือกข้อมูลเพื่อค้นหางาน">
+<div class="wz-top"><div class="wz-title" aria-live="polite">ขั้นตอนที่ <span id="wzn">1</span> จาก 5: <span id="wzl"></span></div><div class="prog" id="prog" role="progressbar" aria-label="ความคืบหน้า" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1"><i id="progi"></i></div><ol class="dots" id="dots"></ol></div>
+<div class="steps">
+<section class="panel step" data-s="1"><h2><span class="hi" data-i="pin"></span>คุณอยากทำงานที่จังหวัดไหน</h2><div class="qbs" id="provq"></div><div class="sel"><label for="prov" class="sub">หรือเลือกจังหวัดอื่น</label><select id="prov"></select></div><p class="sub" style="font-size:.78em;margin-top:8px">ฐานข้อมูลยังไม่มีข้อมูลระดับอำเภอและระยะทาง จึงคัดกรองตามจังหวัดและรายชื่อสาขาที่มีเท่านั้น ข้ามขั้นตอนนี้ได้</p></section>
+<section class="panel step" data-s="2" hidden><h2><span class="hi" data-i="user"></span>อายุและวุฒิการศึกษา</h2><div class="qbs" id="ageq"></div><div class="sel"><label for="age" class="sub">อายุปัจจุบัน</label><select id="age"></select><label for="edu" class="sub">วุฒิสูงสุด</label><select id="edu"><option value="1">ต่ำกว่า ป.6</option><option value="2">ป.6</option><option value="3" selected>ม.3</option><option value="4">ม.6 / ปวช.</option><option value="5">ปวส. / อนุปริญญา</option><option value="6">ปริญญาตรีขึ้นไป</option></select></div></section>
+<section class="panel step" data-s="3" hidden><h2><span class="hi" data-i="heart"></span><span>คุณมีปัญหาสุขภาพหรือสิ่งที่ทำได้ลำบากไหม <small>(แตะเลือกได้หลายข้อ)</small></span></h2><div class="opts" id="lim"></div></section>
+<section class="panel step" data-s="4" hidden><h2><span class="hi" data-i="hand"></span><span>สิ่งที่คุณทำได้ <small>(สีเขียวและเครื่องหมายถูก = ทำได้ แตะอีกครั้งหากทำไม่ได้)</small></span></h2><div class="opts" id="abl"></div><h3>รูปแบบเวลาทำงานที่ต้องการ</h3><div class="opts" id="wt"></div></section>
+<section class="panel step" data-s="5" hidden><h2><span class="hi" data-i="brief"></span>ประเภทงานที่สนใจ</h2><div class="opts" id="cat"></div></section>
+</div>
+<div class="wz-nav"><button class="btn alt" id="wzb" onclick="wzGo(-1)">ย้อนกลับ</button><button class="btn" id="wzf" onclick="wzGo(1)">ถัดไป</button></div>
+<div id="loading" class="loading" role="status" aria-live="polite" hidden><div class="spin"><i></i><i></i><i></i></div><p id="ldt" style="margin:0;font-weight:700"></p></div>
+</section>
+<div id="results" hidden><div id="sum"></div><div id="local"></div><div class="count" id="count" aria-live="polite"></div><div id="sim"></div><div id="res"></div></div>
 <div class="scam"><b>ระวังมิจฉาชีพ</b><ul><li>ไม่โอนค่าสมัคร ค่ามัดจำ หรือค่าชุดก่อนเห็นสัญญาจ้าง</li><li>ไม่บอกรหัส OTP หรือรหัสธนาคารกับใคร</li><li>ติดต่อผ่านช่องทางที่บริษัทประกาศไว้เท่านั้น ไม่แน่ใจโทร 1506 กด 2 หรือให้ลูกหลานช่วยตรวจสอบ</li></ul></div>
 <footer><p>ปรับปรุงฐานข้อมูลล่าสุด: <span id="dbd"></span> ข้อมูลตำแหน่ง คุณสมบัติ และช่องทางติดต่อมาจากข้อมูลที่ผู้ดูแลระบบป้อน ยังไม่ได้ตรวจสอบกับนายจ้างโดยตรง การจัดหมวดหมู่งานและลักษณะทางกายภาพเป็นการประเมินเบื้องต้นของระบบ กรุณาตรวจสอบตำแหน่งว่างกับนายจ้างก่อนเดินทางไปสมัคร เว็บไซต์นี้ไม่ได้เป็นตัวแทนของบริษัทที่ระบุไว้</p></footer>
 </div>
+<button id="chatFab" class="chatfab" onclick="chatToggle(true)" aria-controls="chat">ถามผู้ช่วยหางาน</button>
+<section id="chat" class="chat" role="dialog" aria-label="ผู้ช่วยหางานวัยเก๋า" hidden>
+<div class="ch-h"><b>ผู้ช่วยหางานวัยเก๋า</b><div><button class="ch-b" onclick="chatClear()">เริ่มใหม่</button><button class="ch-b" onclick="chatToggle(false)" aria-label="ปิดหน้าต่างสนทนา">ปิด</button></div></div>
+<div class="ch-n">ตอบจากฐานข้อมูลของเว็บไซต์นี้เท่านั้น ไม่ใช่คำแนะนำทางการแพทย์</div>
+<div id="chLog" class="ch-log" role="log" aria-live="polite"></div>
+<div id="chChips" class="ch-chips"></div>
+<div class="ch-in"><input id="chIn" type="text" placeholder="พิมพ์ที่นี่ เช่น อายุ 65 ปวดเข่า อยู่เชียงใหม่" autocomplete="off" aria-label="พิมพ์ข้อความถึงผู้ช่วย"><button class="btn" onclick="chatSend()">ส่ง</button></div>
+</section>
 <dialog id="dlg" aria-labelledby="dt"><div class="dh"><h2 id="dt"></h2><button class="btn alt" onclick="dlg.close()" aria-label="ปิด">ปิด ✕</button></div><div class="db" id="dbody"></div></dialog>
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
@@ -163,10 +265,15 @@ const WEST=["กาญจนบุรี","เพชรบุรี","ประ�
 function mjR(p){if(p==="กรุงเทพมหานคร")return"กรุงเทพฯ";if(WEST.includes(p))return"ภาคตะวันตก";if(PERI.includes(p)||REG["ภาคกลาง"].split(',').includes(p))return"ภาคกลางและปริมณฑล";if(REG["ภาคตะวันออก"].split(',').includes(p))return"ภาคตะวันออก";if(REG["ภาคเหนือ"].split(',').includes(p))return"ภาคเหนือ";if(REG["ภาคตะวันออกเฉียงเหนือ"].split(',').includes(p))return"ภาคตะวันออกเฉียงเหนือ";return"ภาคใต้"}
 $('#prov').innerHTML='<option value="">-- ทุกจังหวัด (ยังไม่เลือก) --</option>'+Object.entries(REG).map(([r,l])=>`<optgroup label="${r}">${l.split(',').map(p=>`<option>${p}</option>`).join('')}</optgroup>`).join('');
 $('#age').innerHTML=Array.from({length:41},(_,i)=>`<option value="${55+i}"${55+i===60?' selected':''}>${55+i} ปี</option>`).join('');
-$('#lim').innerHTML=Object.entries(LIM).map(([k,v])=>`<label><input type="checkbox" value="${k}">${v[0]}</label>`).join('');
-$('#abl').innerHTML=Object.entries(ABL).map(([k,v])=>`<label><input type="checkbox" value="${k}" checked>${v[0]}</label>`).join('');
-$('#wt').innerHTML=WT.map(([k,v],i)=>`<label><input type="radio" name="wt" value="${k}"${i?'':' checked'}>${v}</label>`).join('');
-$('#cat').innerHTML=[["all","ทุกประเภท"],...Object.entries(CAT)].map(([k,v],i)=>`<label><input type="radio" name="cat" value="${k}"${i?'':' checked'}>${v}</label>`).join('');
+const I={ok:'<circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/>',leg:'<path d="M9 3c0 5-1 7-2 10l3 3v5M15 3c0 4 0 6-2 9"/>',spine:'<path d="M12 3c-3 3 3 5 0 8s3 5 0 10M9 7h6M9 12h6M9 17h6"/>',joint:'<circle cx="12" cy="12" r="3"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/>',stand:'<circle cx="12" cy="5" r="2"/><path d="M12 8v7M8 11h8M9 21l3-6 3 6"/>',walk:'<circle cx="13" cy="5" r="2"/><path d="M12 8l-2 6 3 2v5M12 8l4 3M10 14l-3 6"/>',box:'<path d="M4 8l8-4 8 4v9l-8 4-8-4zM4 8l8 4 8-4M12 12v9"/>',hand:'<path d="M7 12V6a1.5 1.5 0 013 0v5V4a1.5 1.5 0 013 0v7V6a1.5 1.5 0 013 0v8c0 4-2 7-6 7-3 0-5-2-6-5z"/>',eye:'<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',dots:'<circle cx="6" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="18" cy="12" r="1.6"/>',chair:'<path d="M7 4v9h10M7 13v7M17 13v7M7 9h5"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',plus:'<path d="M5 12h14M12 5v14"/>',sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/>',half:'<circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 010 18z" fill="currentColor"/>',grid:'<rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/>',leaf:'<path d="M5 19C5 9 11 4 20 4c0 9-5 15-15 15zM5 19l8-8"/>',cup:'<path d="M5 8h11v6a5 5 0 01-5 5h-1a5 5 0 01-5-5zM16 10h2a2 2 0 010 4h-2M8 3v2M12 3v2"/>',pin:'<path d="M12 21s7-6 7-11a7 7 0 10-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/>',heart:'<path d="M12 20s-8-5-8-11a4.5 4.5 0 018-2.5A4.5 4.5 0 0120 9c0 6-8 11-8 11z"/>',brief:'<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5h6v2M3 13h18"/>',people:'<circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-4 3-6 6-6s6 2 6 6M15 14c3 0 6 1.5 6 5"/>',cart:'<circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M3 4h3l2 12h10l2-8H7"/>',bowl:'<path d="M3 11h18a9 9 0 01-18 0zM8 7c0-2 2-2 2-4M13 7c0-2 2-2 2-4"/>',ticket:'<path d="M3 8h18v3a2 2 0 000 4v3H3v-3a2 2 0 000-4z"/><path d="M14 8v10" stroke-dasharray="2 2"/>',cross:'<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M12 8v8M8 12h8"/>',trophy:'<path d="M8 4h8v5a4 4 0 01-8 0zM8 6H4v1a4 4 0 004 4M16 6h4v1a4 4 0 01-4 4M12 13v4M8 20h8M10 17h4"/>'};
+const ico=n=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${I[n]||''}</svg>`;
+const LIMI={none:"ok",knee:"leg",back:"spine",joint:"joint",nostand:"stand",nowalk:"walk",nolift:"box",arm:"hand",sense:"eye",other:"dots"},ABLI={sit:"chair",stand:"stand",walk:"walk",lift:"box",shift:"clock"},WTI={any:"plus",full:"sun",part:"half"},CATI={all:"grid",1:"leaf",2:"cup",3:"walk",4:"box"};
+const CATS={1:"งานเบา",2:"งานบริการ",3:"งานยืน/เดิน",4:"งานใช้แรง"};
+const tile=(ty,nm,v,t,ic,ck)=>`<label class="tile"><input type="${ty}"${nm?` name="${nm}"`:''} value="${v}"${ck?' checked':''}><span class="ti">${ico(ic)}</span><span class="tt">${t}</span></label>`;
+$('#lim').innerHTML=Object.entries(LIM).map(([k,v])=>tile('checkbox','',k,v[0],LIMI[k],false)).join('');
+$('#abl').innerHTML=Object.entries(ABL).map(([k,v])=>tile('checkbox','',k,v[0],ABLI[k],true)).join('');
+$('#wt').innerHTML=WT.map(([k,v],i)=>tile('radio','wt',k,v,WTI[k],!i)).join('');
+$('#cat').innerHTML=[["all","ทุกประเภท"],...Object.entries(CAT)].map(([k,v],i)=>tile('radio','cat',k,v,CATI[k],!i)).join('');
 let sim=0;
 const pp=p=>p==="กรุงเทพมหานคร"?p:"จังหวัด"+p;
 function user(){
@@ -195,10 +302,12 @@ function ev(j,u){
  return{is,w,ok,loc,area};
 }
 const phys=j=>j.dem.length?j.dem.map(d=>DL[d]).join(" · "):"ไม่มีข้อมูลลักษณะทางกายภาพ";
-function card(j,e){
- const c=CO[j.co];
- return `<article class="job" data-c="${j.cat}"><div class="jt"><div class="mono" style="background:${c.col}" aria-hidden="true">${c.n[0]}</div><div><div class="co">${c.n} · ${c.p}</div><h3>${j.t}</h3></div></div>
-<span class="lv">${j.cat?CAT[j.cat]:"รอยืนยันรายละเอียดจากบริษัท"}</span>
+const jic=j=>/ตั๋ว|ป๊อบคอร์น/.test(j.t)?"ticket":/บาริสต้า/.test(j.t)?"cup":/เภสัช/.test(j.t)?"cross":/ต้อนรับ|บริการ/.test(j.t)?"people":/จัดเรียง|ตรวจรับ|สั่งสินค้า/.test(j.t)?"box":/อาหาร|แม่ครัว|ผัก|เนื้อ/.test(j.t)?"bowl":/ขาย/.test(j.t)?"cart":CATI[j.cat]||"brief";
+function card(j,e,i){
+ const c=CO[j.co],fit=e.pend?"pend":e.is.length?"warn":"good";
+ return `<article class="job ${fit}" data-c="${j.cat}" style="--i:${Math.min(i||0,8)}"><div class="jb"><span class="fit ${fit}">${fit==="good"?"เหมาะกับคุณ":fit==="warn"?"ควรตรวจสอบก่อน":"รอยืนยันรายละเอียด"}</span><div class="jbi">${ico(jic(j))}</div><div class="mono" style="background:${c.col}" aria-hidden="true">${c.n[0]}</div></div><div class="jbody">
+<div class="co">${c.n} · ${c.p}</div><h3>${j.t}</h3>
+<span class="cat">${j.cat?ico(CATI[j.cat])+CATS[j.cat]:"รอยืนยันรายละเอียดจากบริษัท"}</span>
 <p class="row"><b>หน้าที่:</b> ${j.duty||"ไม่พบข้อมูลรายละเอียดหน้าที่ ให้สอบถามนายจ้าง"}</p>
 <p class="row"><b>ลักษณะทางกายภาพ (ประเมินเบื้องต้น):</b> ${phys(j)}</p>
 <p class="row"><b>คุณสมบัติ:</b> ${c.q}</p>
@@ -206,17 +315,24 @@ function card(j,e){
 <p class="row"><b>ค่าจ้าง:</b> ${c.wage&&!j.pend?c.wage+(c.welfare?" · สวัสดิการ: "+c.welfare:""):"ไม่พบข้อมูลค่าจ้าง"}</p>
 ${e.pend?`<div class="warnbox">ข้อมูลคุณสมบัติและตำแหน่งงานยังไม่ครบ สถานะ: รอยืนยันรายละเอียดจากบริษัท</div>`:`<div class="why"><b>เหตุผลที่แนะนำ</b><ul>${e.ok.map(x=>`<li>${x}</li>`).join('')}</ul></div>
 <div class="warnbox"><b>ข้อควรระวังด้านสุขภาพและคุณสมบัติ</b><ul>${[...e.is,...e.w].map(x=>`<li>${x}</li>`).join('')}</ul></div>`}
-<div class="btns"><button class="btn alt" onclick="openJob(${j.id},0)">ดูรายละเอียดงาน</button><button class="btn" onclick="openJob(${j.id},1)">ติดต่อสมัครงาน</button>${j.cat?`<button class="btn alt" onclick="setSim(${j.cat})">ดูตำแหน่งงานอื่นที่คล้ายกัน</button>`:''}</div></article>`;
+<div class="btns"><button class="btn sun" onclick="openJob(${j.id},1)">สมัครงาน / ช่องทางติดต่อ</button><button class="btn alt" onclick="openJob(${j.id},0)">ดูรายละเอียดงาน</button>${j.cat?`<button class="btn alt" onclick="setSim(${j.cat})">ดูตำแหน่งงานอื่นที่คล้ายกัน</button>`:''}</div></div></article>`;
 }
+function sumHtml(good,bad,u){
+ const l=u.lim.filter(k=>k!=="none").map(k=>LIM[k][0]),ch=[`อายุ ${u.age} ปี`,u.prov?pp(u.prov):"ทุกจังหวัด",l.length?l.join(", "):"ไม่ระบุข้อจำกัดทางร่างกาย"];
+ if(!u.shift)ch.push("ทำงานเป็นกะไม่ได้");if(u.wt!=="any")ch.push(u.wt==="part"?"ต้องการพาร์ทไทม์":"ต้องการเต็มเวลา");if(u.cat!=="all")ch.push(CATS[u.cat]);
+ const n=good.length,cs=new Set(good.map(x=>x.j.co)).size,enc=n?`ยอดเยี่ยมค่ะ! เราพบ ${n} ตำแหน่งใน ${cs} บริษัท ที่เหมาะกับคุณ ประสบการณ์ชีวิตของคุณมีคุณค่า ลองเริ่มจากตำแหน่งที่ติดป้าย “เหมาะกับคุณ” ได้เลยนะคะ`:`ไม่ต้องกังวลนะคะ ตอนนี้ยังไม่พบตำแหน่งที่ไม่ขัดกับเงื่อนไขของคุณ ลองแก้ไขข้อมูลหรือเปลี่ยนพื้นที่ แล้วค้นหาอีกครั้ง หรือโทร 1506 กด 2 ให้เจ้าหน้าที่ช่วยแนะนำค่ะ`;
+ return `<div class="sumcard"><div class="si">${ico('trophy')}</div><div><h2>สรุปผลการจับคู่ของคุณ</h2><p style="margin:0">${enc}</p><div class="chips">${ch.map(x=>`<span>${x}</span>`).join('')}</div><div class="sumbtn"><button class="btn alt" onclick="wzEdit(3)">แก้ไขข้อมูลสุขภาพ</button><button class="btn alt" onclick="wzEdit(1)">เปลี่ยนพื้นที่ค้นหา</button><button class="btn alt" onclick="wzEdit(2)">แก้ไขอายุ</button></div></div></div>`}
 function render(){
  const u=user(),r=J.map(j=>({j,e:ev(j,u)})).filter(x=>x.e);
  let L=r.filter(x=>x.e.pend?(u.cat==="all"&&!sim):(sim?x.j.cat===sim:(u.cat==="all"||+u.cat===x.j.cat)));
  const srt=(a,b)=>a.e.is.length-b.e.is.length||b.e.loc-a.e.loc||a.j.cat-b.j.cat;
  const good=L.filter(x=>!x.e.pend&&!x.e.is.length).sort(srt),bad=L.filter(x=>!x.e.pend&&x.e.is.length).sort(srt),pend=L.filter(x=>x.e.pend);
+ $('#sum').innerHTML=sumHtml(good,bad,u);
  $('#sim').innerHTML=sim?`<div class="hint">กำลังแสดงเฉพาะ ${CAT[sim]} <button class="btn alt" style="min-height:48px;margin-left:8px" onclick="setSim(0)">ยกเลิก</button></div>`:'';
  $('#count').textContent=`พบ ${good.length} ตำแหน่งที่เหมาะกับคุณ${u.prov?' ใน'+pp(u.prov)+' และสาขาทั่วประเทศ':''}${bad.length?` (และอีก ${bad.length} ตำแหน่งที่ควรตรวจสอบก่อน)`:''}`;
- const g=(t,a)=>a.length?`<h2 class="grp">${t}</h2><div class="grid">${a.map(x=>card(x.j,x.e)).join('')}</div>`:'';
+ const g=(t,a)=>a.length?`<h2 class="grp">${t}</h2><div class="grid">${a.map((x,i)=>card(x.j,x.e,i)).join('')}</div>`:'';
  $('#res').innerHTML=(good.length?g("ตำแหน่งที่เหมาะกับคุณ",good):'<div class="empty">ยังไม่พบตำแหน่งที่ไม่มีข้อขัดแย้ง ลองดูรายการที่ควรตรวจสอบด้านล่าง หรือเปลี่ยนจังหวัด/เงื่อนไข</div>')+g("ตำแหน่งที่ควรปรึกษานายจ้างหรือตรวจสอบก่อน",bad)+g("รอยืนยันรายละเอียดจากบริษัท",pend)+(u.prov&&!BR[u.prov]?`<div class="hint">ยังไม่มีสาขา Café Amazon ในฐานข้อมูลของ${pp(u.prov)}</div>`:'');
+ qbSync();
 }
 function setSim(c){sim=c;render();window.scrollTo({top:$('#count').offsetTop-80,behavior:'smooth'})}
 function ct(c,j){
@@ -260,6 +376,157 @@ const dlg=$('#dlg');
 $$('select,input').forEach(i=>i.addEventListener('change',ev=>{
  if(i.closest('#lim')){if(i.value==="none"&&i.checked)$$('#lim input').forEach(x=>{if(x!==i)x.checked=false});else if(i.checked)$('#lim input[value=none]').checked=false}
  if(i.id==="prov")renderLocal();sim=0;render()}));
+
+/* ===== ผู้ช่วยแชท (ทำงานในเบราว์เซอร์ ตอบจากฐานข้อมูลของเว็บเท่านั้น) ===== */
+const CH={K:{age:0,prov:0,lim:0},last:{co:null,recs:[]},exp:null,started:0};
+const TH=x=>x.replace(/[๐-๙]/g,d=>"๐๑๒๓๔๕๖๗๘๙".indexOf(d));
+const esc=x=>x.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const ALIAS=[["กรุงเทพมหานคร",/กรุงเทพ|กทม|บางกอก/],["พระนครศรีอยุธยา",/อยุธยา/],["นครราชสีมา",/นครราชสีมา|โคราช/]];
+const WEAK=["เลย","ตาก","แพร่","น่าน"];
+const ALLP=Object.values(REG).join(',').split(',').sort((a,b)=>b.length-a.length);
+function findProv(t){for(const[p,r]of ALIAS)if(r.test(t))return p;for(const p of ALLP){if(WEAK.includes(p)){if(new RegExp("(จังหวัด|จ\\.|อยู่|แถว|ที่|ใน)\\s*"+p).test(t))return p}else if(t.includes(p))return p}return null}
+const LR=[["knee",/ปวดเข่า|เจ็บเข่า|เข่า(เสื่อม|ไม่ดี|ปวด|เจ็บ)/],["back",/ปวดหลัง|เจ็บหลัง|หลัง(ไม่ดี|เสื่อม)|หมอนรองกระดูก/],["joint",/ปวดข้อ|ข้ออักเสบ|ข้อเสื่อม|ปวดกล้ามเนื้อ|เก๊าท์|เกาต์/],["nostand",/ยืน(นาน)?(ๆ)?(ไม่ไหว|ไม่ได้|ไม่ค่อยไหว|ลำบาก|ไม่ถนัด)/],["nowalk",/เดิน(นาน)?(ไม่ไหว|ไม่ได้|ไม่ค่อยไหว|ลำบาก|ไม่สะดวก)/],["nolift",/ยก(ของ)?(หนัก)?(ไม่ไหว|ไม่ได้|ไม่ค่อยไหว|ลำบาก)|ห้ามยก/],["arm",/มือสั่น|แขน(ไม่|เจ็บ|ปวด)|ใช้มือไม่|ปวดไหล่/],["sense",/สายตา|มองไม่ชัด|ตามัว|ตาไม่ดี|ต้อกระจก|ต้อหิน|หูตึง|หูไม่ดี|ได้ยินไม่|หูหนวก/]];
+function parse(t0){
+ const t=TH(t0).toLowerCase(),f={};let m=t.match(/(\d{2})\s*(?:ปี|ขวบ)/)||t.match(/อายุ\s*(\d{2})/);
+ if(!m&&CH.exp==="age")m=t.match(/^\D*(\d{2})\D*$/);
+ if(m&&+m[1]>=55&&+m[1]<=99)f.age=+m[1];
+ const p=findProv(t);if(p)f.prov=p;
+ if(/ปริญญา|ป\.ตรี/.test(t))f.edu=6;else if(/ปวส|อนุปริญญา/.test(t))f.edu=5;else if(/ม\.?\s*6|ม\.ปลาย|มัธยมปลาย|ปวช/.test(t))f.edu=4;else if(/ม\.?\s*3|มัธยมต้น/.test(t))f.edu=3;else if(/ป\.?\s*6|ประถม/.test(t))f.edu=2;else if(/ไม่ได้เรียน|ต่ำกว่า ป/.test(t))f.edu=1;
+ const neg=/ไม่(มี|เป็น)(ปัญหา|อาการ|โรค)?(เรื่อง)?(เข่า|หลัง|ข้อ|สายตา|หู)/.test(t),L=neg?[]:LR.filter(x=>x[1].test(t)).map(x=>x[0]);
+ if(L.length)f.lim=L;else if(/ไม่มีโรค|ไม่มีปัญหา(เรื่อง)?สุขภาพ|สุขภาพ(แข็งแรง|ดี)|ร่างกายแข็งแรง|ไม่มีข้อจำกัด|แข็งแรงดี/.test(t)||(CH.exp==="lim"&&/^\s*(ไม่มี|ไม่|ไม่มีเลย|แข็งแรง)/.test(t)))f.lim=["none"];
+ if(/(ไม่สะดวก|ไม่ได้|ทำไม่ได้|ไม่ทำ|ไม่ถนัด|ไม่เอา).{0,4}กะ/.test(t))f.shift=false;else if(/(ทำ|ได้)(งาน)?เป็นกะ|กะได้|ทำกะ/.test(t))f.shift=true;
+ if(/พาร์ท?ไทม์|part ?time|ไม่เต็มวัน|ครึ่งวัน|วันละ.{0,6}ชั่วโมง/.test(t))f.wt="part";else if(/เต็มเวลา|ฟูลไทม์|full ?time/.test(t))f.wt="full";
+ return f}
+function apply(f){
+ if(f.age){$('#age').value=f.age;CH.K.age=1}
+ if(f.prov){$('#prov').value=f.prov;CH.K.prov=1;renderLocal()}
+ if(f.edu)$('#edu').value=f.edu;
+ if(f.lim){const n=f.lim[0]==="none";$$('#lim input').forEach(i=>{i.checked=n?i.value==="none":(i.value!=="none"&&(f.lim.includes(i.value)||i.checked))});CH.K.lim=1}
+ if("shift"in f)$('#abl input[value=shift]').checked=f.shift;
+ if(f.wt)$$('input[name=wt]').forEach(i=>i.checked=i.value===f.wt);
+ if(Object.keys(f).length){sim=0;render()}}
+const CK=[["lotus",/โลตัส|lotus|go ?fresh/],["bigc",/บิ๊กซี|บิกซี|big ?c|เพียว/],["cj",/ซีเจ|\bcj\b/],["hp",/โฮมโปร|home ?pro/],["cen",/เซ็นทรัล|central|ซีอาร์ซี/],["amz",/อเมซอน|amazon|คาเฟ่/],["maj",/เมเจอร์|major|โรงหนัง|ภาพยนตร์|ซีนีเพล็กซ์/]];
+const findCo=t=>(CK.find(x=>x[1].test(t))||[])[0]||null;
+const KW=[[/บาริสต้า|กาแฟ/,/บาริสต้า|กาแฟ/],[/ต้อนรับ|บริการลูกค้า|ประชาสัมพันธ์/,/ต้อนรับ|บริการ/],[/พนักงานขาย|แคชเชียร์|ขายของ|ขายตั๋ว/,/ขาย/],[/จัดเรียง|จัดของ|เรียงสินค้า/,/จัดเรียง/],[/ศูนย์อาหาร/,/ศูนย์อาหาร/],[/แม่ครัว|ทำอาหาร|ครัว/,/แม่ครัว|ศูนย์อาหาร/],[/เภสัช|ร้านยา/,/เภสัช/],[/ผัก|ผลไม้/,/ผัก/],[/เนื้อสัตว์|อาหารทะเล/,/เนื้อ/],[/อาหารสด/,/อาหารสด/],[/ตั๋ว|ป๊อบคอร์น|ป๊อปคอร์น|เครื่องดื่ม/,/ตั๋ว|ป๊อบคอร์น/],[/ตรวจรับ/,/ตรวจรับ/],[/สั่งสินค้า/,/สั่งสินค้า/]];
+const findJobs=t=>J.filter(j=>KW.some(k=>k[0].test(t)&&k[1].test(j.t)));
+const tel=n=>n.length>9&&!n.includes(',')?n.replace(/^(\d{2,3})(\d{3})(\d{4})$/,'$1-$2-$3'):n;
+const lnk=(h,x)=>`<a href="${h}" target="_blank" rel="noopener noreferrer">${x}</a>`;
+function prof(u){const a=[];if(CH.K.age)a.push(`อายุ ${u.age} ปี`);if(u.prov)a.push(pp(u.prov));const l=u.lim.filter(k=>k!=="none").map(k=>LIM[k][0]);if(l.length)a.push("ข้อจำกัด: "+l.join(", "));else if(CH.K.lim)a.push("ไม่มีข้อจำกัดทางร่างกาย");if(!u.shift)a.push("ทำงานเป็นกะไม่ได้");if(u.wt!=="any")a.push(u.wt==="part"?"ต้องการพาร์ทไทม์":"ต้องการเต็มเวลา");return a.join(" · ")}
+const firstJob=co=>J.find(j=>j.co===co);
+const OPEN=(co,m,t)=>`<button class="cb" onclick="openJob(${firstJob(co).id},${m})">${t}</button>`;
+const CC=["ติดต่อ","ค่าจ้าง","คุณสมบัติ","สาขา"];
+function ask(m){
+ if(m==="age")return{h:"ขอทราบอายุของคุณก่อนนะคะ พิมพ์เป็นตัวเลขได้เลย เช่น 65",c:["ฉันอายุ 60 ปี","ฉันอายุ 65 ปี","ฉันอายุ 70 ปี","ฉันอายุ 75 ปี"]};
+ if(m==="prov")return{h:"คุณอยู่หรืออยากทำงานที่จังหวัดไหนคะ",c:["กรุงเทพมหานคร","เชียงใหม่","ขอนแก่น","ภูเก็ต","ชลบุรี","ข้ามเรื่องจังหวัด"]};
+ return{h:"มีปัญหาสุขภาพหรือสิ่งที่ทำได้ลำบากไหมคะ เช่น ปวดเข่า ปวดหลัง ยืนนานไม่ได้ ยกของหนักไม่ได้ สายตาหรือการได้ยินไม่ดี ถ้าไม่มี ตอบว่า ไม่มี ได้เลยค่ะ",c:["ไม่มี","ปวดเข่า","ปวดหลัง","ยืนนานไม่ไหว","ยกของหนักไม่ได้","สายตาไม่ดี"]}}
+function recommend(jb,co,skip){
+ const u=user();
+ if(!skip){const m=!CH.K.age?"age":!CH.K.prov?"prov":!CH.K.lim?"lim":null;if(m){CH.exp=m;return ask(m)}}
+ CH.exp=null;
+ let rows=J.map(j=>({j,e:ev(j,u)})).filter(x=>x.e);
+ if(jb.length)rows=rows.filter(x=>jb.includes(x.j));if(co)rows=rows.filter(x=>x.j.co===co);
+ const srt=(a,b)=>b.e.loc-a.e.loc||a.j.cat-b.j.cat,good=rows.filter(x=>!x.e.is.length).sort(srt),bad=rows.filter(x=>x.e.is.length).sort(srt);
+ const grp=a=>{const m=new Map();a.forEach(x=>{if(!m.has(x.j.co))m.set(x.j.co,[]);m.get(x.j.co).push(x)});return[...m]};
+ const G=grp(good),Bd=grp(bad);CH.last.recs=G.map(g=>g[0]);if(G.length)CH.last.co=G[0][0];
+ let h=`<b>ที่ฉันเข้าใจ:</b> ${prof(u)||"ยังไม่ได้ระบุข้อมูลส่วนตัว"}<br>`;
+ if(G.length){h+=`ฉันพบ <b>${good.length} ตำแหน่ง</b> ใน ${G.length} บริษัท ที่ไม่ขัดกับข้อมูลที่คุณบอกค่ะ<br>`+G.slice(0,5).map((g,i)=>{const c=CO[g[0]];return `<div class="cg"><b>${i+1}. ${c.n}</b> (${c.p})<br>ตำแหน่ง: ${g[1].map(x=>x.j.t.replace(/ \(.*\)$/,'')).join(", ")}<br>สถานที่: ${g[1][0].e.area}</div>`}).join('');if(G.length>5)h+=`<br>และอีก ${G.length-5} บริษัท ดูทั้งหมดในหน้าเว็บได้ค่ะ`}
+ else h+=`ยังไม่พบตำแหน่งที่ไม่ขัดกับข้อมูลที่คุณบอกค่ะ`;
+ if(Bd.length)h+=`<br><br><b>ควรตรวจสอบก่อน:</b> `+Bd.slice(0,3).map(g=>`${CO[g[0]].n} (${g[1][0].e.is[0]})`).join(" · ");
+ if(!rows.length)h=`ไม่พบตำแหน่งที่ตรงกับคำค้นในฐานข้อมูลตอนนี้ค่ะ ลองเปลี่ยนจังหวัดหรือถามใหม่ได้นะคะ`;
+ h+=`<br><br>ข้อมูลนี้อ้างอิงจากฐานข้อมูลของเว็บไซต์ ควรตรวจสอบตำแหน่งว่างกับนายจ้างก่อนไปสมัครค่ะ`+(G.length?`<br><button class="cb" onclick="chatToggle(false);wzResults(true)">ดูผลทั้งหมดในหน้าเว็บ</button>`:'');
+ return{h,c:G.length?["ติดต่อ ข้อ 1","รายละเอียด ข้อ 1","ค่าจ้าง","สาขาใกล้ฉัน","เปลี่ยนจังหวัด","เริ่มใหม่"]:["เริ่มใหม่","เปลี่ยนจังหวัด","ดูทุกจังหวัด"]}}
+function contactMsg(co){
+ const c=CO[co],a=[];
+ (c.tel||[]).forEach(t=>a.push("โทร: "+lnk("tel:"+t[1],`${t[0].replace(/\s?\d[\d-]*$/,'')} ${tel(t[1].split(',')[0])}${t[1].includes(',')?' ต่อ '+t[1].split(',')[1]:''}`.trim())));
+ if(c.line)a.push("LINE: "+(c.line[0]==="@"?lnk(c.lineUrl||"https://line.me/R/ti/p/%40"+c.line.slice(1),c.line):c.line));
+ if(c.lineTxt)a.push("LINE ID: <b>"+c.lineTxt+"</b> (ค้นหาในแอป LINE)");
+ if(c.fb)a.push("Facebook: "+lnk(fb(c.fb),"ค้นหาเพจ “"+c.fb+"”"));
+ if(c.email)a.push("อีเมล: "+lnk("mailto:"+c.email,c.email));
+ if(c.web)a.push("เว็บไซต์สมัครงาน: "+lnk(c.web,"เปิดเว็บไซต์"));
+ if(c.apply)a.push("ฟอร์มสมัครออนไลน์: "+lnk(c.apply,"เปิดฟอร์ม"));
+ if(c.hr)a.push(c.hr);if(c.ask)a.push(c.ask);
+ return `<b>ช่องทางติดต่อ ${c.n}</b> (${c.p})<br>`+(a.length?a.join("<br>"):"ไม่พบช่องทางติดต่อในฐานข้อมูล")+`<br>${OPEN(co,1,"เปิดหน้ารายละเอียดและสาขา")}<br>ไม่โอนเงินและไม่บอกรหัส OTP กับใครนะคะ`}
+function branchMsg(co,u){
+ const c=CO[co];if(!u.prov){CH.exp="prov";return ask("prov")}
+ const B=BRN[co],l=B&&B[u.prov];
+ if(l)return{h:`<b>${c.n}</b> มี ${l.length} สาขาในฐานข้อมูลของ${pp(u.prov)} ค่ะ<br>`+l.slice(0,10).map(x=>`• ${c.pre||''}${x}`).join("<br>")+(l.length>10?`<br>และอีก ${l.length-10} สาขา`:'')+`<br>${OPEN(co,0,"ดูรายชื่อสาขาทั้งหมดพร้อมแผนที่")}<br>ควรโทรถามสาขาก่อนเดินทางนะคะ`,c:["ติดต่อ","ค่าจ้าง","คุณสมบัติ"]};
+ if(co==="maj"){const r=mjR(u.prov);return{h:`${c.n} มีรายชื่อตัวอย่างสาขาในแถบ <b>${r}</b> จำนวน ${MJ[r].length} สาขา<br>${OPEN(co,0,"ดูรายชื่อสาขาตัวอย่าง")}`,c:["ติดต่อ"]}}
+ if(c.area==="branch")return{h:`ยังไม่มีสาขา ${c.n} ในฐานข้อมูลของ${pp(u.prov)} ค่ะ`,c:["เปลี่ยนจังหวัด","แนะนำงานอื่น"]};
+ return{h:`ฐานข้อมูลยังไม่มีรายชื่อสาขา ${c.n} ในแต่ละจังหวัด แต่แหล่งข้อมูลระบุว่ารับสมัครได้ทุกสาขาค่ะ ลองติดต่อฝ่ายบุคคลหรือสาขาใกล้บ้านโดยตรง<br>${OPEN(co,1,"ดูช่องทางติดต่อ")}`,c:["ติดต่อ"]}}
+function reply(raw){
+ const t=TH(raw).toLowerCase(),u0=user(),exp=CH.exp;
+ if(exp&&/ข้าม|ทุกจังหวัด|ไม่ระบุ|ดูเลย|แสดงเลย/.test(t)){CH.K[exp]=1;CH.exp=null;if(/ดูเลย|แสดงเลย/.test(t)){CH.K.age=CH.K.prov=CH.K.lim=1}}
+ const f=parse(raw),had=Object.keys(f).length;apply(f);
+ const u=user();let ix=(t.match(/(?:ข้อ|อันที่|ลำดับ|หมายเลข)\s*(\d)/)||[])[1];if(!ix&&/(อัน|ข้อ|ตัว)แรก/.test(t))ix=1;if(!ix&&/(อัน|ข้อ|ตัว)(ที่)?สอง/.test(t))ix=2;
+ let co=findCo(t);if(ix&&CH.last.recs[ix-1])co=CH.last.recs[ix-1];
+ const jb=findJobs(t),fu=/ติดต่อ|เบอร์|โทร|สมัคร|ไลน์|line|เฟซ|facebook|อีเมล|ลิงก์|ลิงค์|เว็บ|ค่าจ้าง|เงินเดือน|รายได้|สวัสดิการ|คุณสมบัติ|วุฒิ|สาขา|รายละเอียด|หน้าที่|ทำอะไร/.test(t);
+ if(!co&&jb.length&&fu&&new Set(jb.map(j=>j.co)).size===1)co=jb[0].co;
+ const cx=co||CH.last.co;if(co)CH.last.co=co;
+ if(/เริ่มใหม่|ล้างข้อมูล|เริ่มต้นใหม่|ลบข้อมูล/.test(t)){chatReset();return{h:"เริ่มใหม่แล้วค่ะ ขอทราบอายุของคุณนะคะ",c:ask("age").c}}
+ if(/เปลี่ยนจังหวัด/.test(t)){CH.exp="prov";return ask("prov")}
+ if(/ดูทุกจังหวัด/.test(t)){$('#prov').value='';CH.K.prov=1;renderLocal();render();return recommend(jb,co,false)}
+ if(/มิจฉาชีพ|หลอก|โอนเงิน|ค่าสมัคร|ค่ามัดจำ|otp|โกง/.test(t))return{h:"ระวังนะคะ งานที่ถูกต้องจะไม่เก็บค่าสมัคร ค่ามัดจำ หรือค่าชุดก่อนเห็นสัญญาจ้าง และไม่ขอรหัส OTP หรือรหัสธนาคาร ติดต่อผ่านช่องทางที่บริษัทประกาศไว้เท่านั้น ไม่แน่ใจโทร <a href='tel:1506,2'>1506 กด 2</a> หรือให้ลูกหลานช่วยตรวจสอบค่ะ",c:["แนะนำงานให้หน่อย"]};
+ if(/เบาหวาน|ความดัน|โรคหัวใจ|โรคประจำตัว|หัวใจ|โรค(?!บริการ)/.test(t)&&!had)return{h:"ฉันวินิจฉัยโรคหรือบอกว่างานไหนปลอดภัยทางการแพทย์ไม่ได้นะคะ ข้อมูลที่มี: โครงการของ Lotus’s ระบุว่าต้องไม่มีโรคประจำตัวที่เป็นอุปสรรคต่อการทำงาน และ Big C ระบุว่าต้องสุขภาพแข็งแรงไม่มีโรคประจำตัว ส่วนบริษัทอื่นระบุว่าต้องสุขภาพแข็งแรง ควรปรึกษาแพทย์และสอบถามนายจ้างก่อนสมัครค่ะ",c:["แนะนำงานให้หน่อย","ติดต่อ"]};
+ if(/ขอบคุณ|ขอบใจ|บาย|แล้วเจอกัน/.test(t))return{h:"ยินดีค่ะ หากต้องการถามเพิ่มเติม พิมพ์ถามได้ตลอดนะคะ ขอให้ได้งานที่เหมาะกับตัวเองค่ะ",c:["แนะนำงานให้หน่อย"]};
+ if(/ติดต่อ|เบอร์|โทร|ไลน์|line|เฟซ|facebook|อีเมล|ลิงก์|ลิงค์|เว็บ|สมัคร/.test(t)&&(cx||/ติดต่อ|เบอร์|โทร|ไลน์|เฟซ/.test(t))){
+  if(cx)return{h:contactMsg(cx),c:CC.filter(x=>x!=="ติดต่อ").concat(["แนะนำงานอื่น"])};
+  return{h:"อยากได้ช่องทางติดต่อของบริษัทไหนคะ",c:Object.values(CO).map(c=>"ติดต่อ "+c.n)}}
+ if(/ค่าจ้าง|เงินเดือน|รายได้|ได้เงิน|เท่าไหร่|เท่าไร|สวัสดิการ|ค่าแรง/.test(t)){
+  if(cx){const c=CO[cx];return{h:c.wage?`<b>${c.n}</b>: ค่าจ้าง ${c.wage}${c.welfare?`<br>สวัสดิการ: ${c.welfare}`:''}${c.time?`<br>เวลาทำงาน: ${c.time}`:''}`:`ฐานข้อมูลไม่พบข้อมูลค่าจ้างของ ${c.n} ค่ะ ควรสอบถามฝ่ายบุคคลโดยตรง`,c:["ติดต่อ","คุณสมบัติ","สาขา"]}}
+  return{h:"ในฐานข้อมูลมีเพียง CJ MORE ที่ระบุค่าจ้าง คือ 50 บาทต่อชั่วโมง พร้อมสวัสดิการ ส่วนบริษัทอื่นไม่พบข้อมูลค่าจ้าง ควรสอบถามฝ่ายบุคคลค่ะ",c:["ติดต่อ CJ MORE","แนะนำงานให้หน่อย"]}}
+ if(/คุณสมบัติ|วุฒิ|ต้องจบ|รับอายุ|เรียนจบ|ผ่านไหม|สมัครได้ไหม|ได้ไหม/.test(t)&&cx){
+  const c=CO[cx],w=[];if(CH.K.age&&(u.age<c.age[0]||u.age>c.age[1]))w.push(`อายุ ${u.age} ปีอยู่นอกช่วงที่รับ`);if(c.edu&&u.edu<c.edu)w.push("วุฒิการศึกษาต่ำกว่าที่กำหนด");
+  return{h:`<b>${c.n}</b> (${c.p})<br>คุณสมบัติ: ${c.q}`+(w.length?`<br><br>เทียบกับข้อมูลที่คุณบอก: ${w.join(", ")}`:CH.K.age?`<br><br>เทียบกับข้อมูลที่คุณบอก: ยังไม่พบข้อขัดแย้งด้านอายุและวุฒิ`:''),c:["ติดต่อ","ค่าจ้าง","สาขา"]}}
+ if(/สาขา|ที่ไหน|แถว|ใกล้บ้าน|ใกล้ฉัน/.test(t)&&cx)return branchMsg(cx,u);
+ if(/สาขา|ใกล้บ้าน|ใกล้ฉัน/.test(t)&&!cx)return recommend(jb,null,false);
+ if(/รายละเอียด|หน้าที่|ทำอะไร|ลักษณะงาน|เป็นยังไง/.test(t)&&(cx||jb.length)){
+  const k=cx||jb[0].co,c=CO[k],js=J.filter(j=>j.co===k&&(!jb.length||jb.includes(j)));
+  return{h:`<b>${c.n}</b> (${c.p})<br>`+js.map(j=>`• ${j.t} (${j.cat?CAT[j.cat].replace(/^หมวด \d /,''):'ยังไม่จัดหมวด'}) ลักษณะงานเบื้องต้น: ${phys(j)}${j.duty?`<br>&nbsp;&nbsp;หน้าที่: ${j.duty}`:''}`).join("<br>")+`<br><br>คุณสมบัติ: ${c.q}<br>${OPEN(k,0,"เปิดรายละเอียดเต็ม")}<br><small>ลักษณะทางกายภาพเป็นการประเมินเบื้องต้นของเว็บไซต์ ไม่ใช่ข้อมูลจากนายจ้าง</small>`,c:["ติดต่อ","ค่าจ้าง","สาขา"]}}
+ if(/แนะนำ|หางาน|มีงาน|งานอะไร|อยากทำ|ทำงาน|งานที่เหมาะ|งานเบา|งานนั่ง/.test(t)||had||jb.length||co)return recommend(jb,co,false);
+ if(/สวัสดี|หวัดดี|hello|^hi\b/.test(t))return{h:"สวัสดีค่ะ ยินดีที่ได้ช่วยนะคะ บอกอายุ จังหวัด และปัญหาสุขภาพที่มี แล้วฉันจะแนะนำงานจากฐานข้อมูลให้ค่ะ",c:["แนะนำงานให้หน่อย","ขอเบอร์ติดต่อ"]};
+ if(/ช่วย|ทำอะไรได้|ใช้ยังไง|ใช้งาน/.test(t))return{h:"ฉันช่วยได้ดังนี้ค่ะ<br>• แนะนำงานตามอายุ สุขภาพ ข้อจำกัดร่างกาย และจังหวัด<br>• บอกช่องทางติดต่อ เบอร์โทร LINE Facebook และลิงก์สมัคร<br>• บอกคุณสมบัติ ค่าจ้าง และสาขาที่มีในฐานข้อมูล<br>พิมพ์เล่าได้เลย เช่น “อายุ 65 ปวดเข่า อยู่เชียงใหม่”",c:["แนะนำงานให้หน่อย","ฉันปวดเข่า ทำงานอะไรได้บ้าง"]};
+ if(exp)return ask(exp);
+ return{h:"ขออภัยค่ะ ฉันยังไม่เข้าใจคำถามนี้ ฉันตอบได้เฉพาะเรื่องงานในฐานข้อมูลของเว็บไซต์นี้ เช่น แนะนำงานตามสุขภาพ ช่องทางติดต่อ ค่าจ้าง คุณสมบัติ และสาขา ลองพิมพ์ใหม่อีกครั้งนะคะ",c:["แนะนำงานให้หน่อย","ขอเบอร์ติดต่อ","ฉันช่วยอะไรได้บ้าง"]}}
+function chatReset(){CH.K={age:0,prov:0,lim:0};CH.last={co:null,recs:[]};CH.exp=null;$('#age').value=60;$('#prov').value='';$('#edu').value=3;$$('#lim input').forEach(i=>i.checked=false);$$('#abl input').forEach(i=>i.checked=true);$$('input[name=wt]').forEach(i=>i.checked=i.value==="any");renderLocal();sim=0;render()}
+const chLog=()=>$('#chLog');
+function addMsg(h,c){const d=document.createElement('div');d.className='m '+c;d.innerHTML=h;chLog().appendChild(d);chLog().scrollTop=chLog().scrollHeight;return d}
+function setChips(a){$('#chChips').innerHTML=(a||[]).map(x=>`<button class="chip" data-t="${esc(x)}">${esc(x)}</button>`).join('')}
+function chatSend(v){v=(v===undefined?$('#chIn').value:v).trim();if(!v)return;addMsg(esc(v),'u');$('#chIn').value='';setChips([]);const ty=addMsg('กำลังพิมพ์...','b');setTimeout(()=>{ty.remove();let r;try{r=reply(v)}catch(e){r={h:"ขออภัยค่ะ เกิดข้อผิดพลาด ลองพิมพ์ใหม่อีกครั้งนะคะ",c:["เริ่มใหม่"]}}addMsg(r.h,'b');setChips(r.c)},450)}
+function chatStart(){CH.started=1;CH.K.prov=CH.K.prov||(!!$('#prov').value?1:0);CH.K.lim=CH.K.lim||($$('#lim input:checked').length?1:0);const m=!CH.K.age?"age":!CH.K.prov?"prov":!CH.K.lim?"lim":null;CH.exp=m;
+ addMsg("สวัสดีค่ะ ฉันเป็นผู้ช่วยหางานวัยเก๋า ช่วยแนะนำงานที่เหมาะกับอายุ สุขภาพ และจังหวัดของคุณ โดยอ้างอิงจากฐานข้อมูลของเว็บไซต์นี้เท่านั้นค่ะ"+(m?"":"<br>ฉันเห็นว่าคุณกรอกข้อมูลในหน้าเว็บไว้แล้ว พิมพ์ “แนะนำงานให้หน่อย” ได้เลยค่ะ"),'b');
+ if(m){const a=ask(m);addMsg(a.h,'b');setChips(a.c)}else setChips(["แนะนำงานให้หน่อย","ขอเบอร์ติดต่อ","ฉันช่วยอะไรได้บ้าง"])}
+function chatToggle(o){const p=$('#chat');const open=o===undefined?p.hidden:o;p.hidden=!open;$('#chatFab').hidden=open;if(open){if(!CH.started)chatStart();setTimeout(()=>$('#chIn').focus(),50)}else $('#chatFab').focus()}
+function chatClear(){chLog().innerHTML='';setChips([]);chatReset();CH.started=0;chatStart()}
+$('#chChips').addEventListener('click',e=>{const b=e.target.closest('button');if(b)chatSend(b.dataset.t)});
+$('#chIn').addEventListener('keydown',e=>{if(e.key==="Enter"){e.preventDefault();chatSend()}});
+document.addEventListener('keydown',e=>{if(e.key==="Escape"&&!$('#chat').hidden&&!dlg.open)chatToggle(false)});
+$('#age').addEventListener('change',()=>{CH.K.age=1});
+
+/* ===== ตัวช่วยเลือกข้อมูลทีละขั้นตอน ===== */
+let ws=1;const WS=[["pin","พื้นที่"],["user","อายุ"],["heart","สุขภาพ"],["hand","ความสามารถ"],["brief","ประเภทงาน"]];
+$('#dots').innerHTML=WS.map((w,i)=>`<li data-d="${i+1}"><b>${ico(w[0])}</b>${w[1]}</li>`).join('');
+$$('.hi').forEach(e=>e.innerHTML=ico(e.dataset.i));
+$('#ageq').innerHTML=[60,65,70,75,80].map(a=>`<button type="button" class="qb" data-age="${a}">${a} ปี</button>`).join('');
+$('#provq').innerHTML=["กรุงเทพมหานคร","เชียงใหม่","ขอนแก่น","นครราชสีมา","ภูเก็ต","ชลบุรี","สงขลา"].map(p=>`<button type="button" class="qb" data-prov="${p}">${p}</button>`).join('')+`<button type="button" class="qb" data-prov="">ทุกจังหวัด</button>`;
+(()=>{let n=0;for(const m of Object.values(BRN))for(const l of Object.values(m))n+=l.length;$('#stats').innerHTML=[[Object.keys(CO).length,"บริษัท"],[J.length,"ตำแหน่งงาน"],[n,"สาขาในฐานข้อมูล"],[77,"จังหวัด"]].map(x=>`<div><b>${x[0]}</b>${x[1]}</div>`).join('')})();
+function qbSync(){$$('.qb[data-age]').forEach(b=>b.classList.toggle('on',b.dataset.age===$('#age').value));$$('.qb[data-prov]').forEach(b=>b.classList.toggle('on',b.dataset.prov===$('#prov').value))}
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('.qb');if(!b)return;const el=b.dataset.age!==undefined?$('#age'):$('#prov');el.value=b.dataset.age!==undefined?b.dataset.age:b.dataset.prov;el.dispatchEvent(new Event('change',{bubbles:true}));qbSync()});
+function wzShow(n,nf){
+ ws=n;$$('.step').forEach(p=>p.hidden=+p.dataset.s!==n);
+ $('#wzn').textContent=n;$('#wzl').textContent=WS[n-1][1];$('#progi').style.width=(n/5*100)+'%';$('#prog').setAttribute('aria-valuenow',n);
+ $$('#dots li').forEach(li=>{const d=+li.dataset.d;li.className=d===n?'on':d<n?'done':''});
+ $('#wzb').disabled=n===1;$('#wzf').textContent=n===5?'ค้นหางานที่เหมาะกับฉัน':'ถัดไป';qbSync();
+ if(!nf){const h=document.querySelector('.step:not([hidden]) h2');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true})}$('#wizard').scrollIntoView({behavior:'smooth',block:'start'})}}
+function wzGo(d){if(d>0&&ws===5)return wzSearch();wzShow(Math.min(5,Math.max(1,ws+d)))}
+function wzSearch(){
+ const L=$('#loading'),ms=matchMedia('(prefers-reduced-motion: reduce)').matches?300:700,tx=["กำลังตรวจสอบข้อมูลสุขภาพของคุณ...","กำลังจับคู่กับตำแหน่งงานในฐานข้อมูล...","กำลังคัดสาขาในพื้นที่ของคุณ..."];
+ $('.steps').hidden=true;$('.wz-nav').hidden=true;L.hidden=false;let i=0;$('#ldt').textContent=tx[0];
+ const iv=setInterval(()=>{i++;if(i<tx.length)$('#ldt').textContent=tx[i]},ms);
+ setTimeout(()=>{clearInterval(iv);L.hidden=true;wzResults(true)},ms*tx.length)}
+function wzResults(sc){render();$('#loading').hidden=true;$('#wizard').hidden=true;$('#results').hidden=false;if(sc)$('#sum').scrollIntoView({behavior:'smooth',block:'start'})}
+function wzEdit(n){$('#results').hidden=true;$('#wizard').hidden=false;$('.steps').hidden=false;$('.wz-nav').hidden=false;$('#loading').hidden=true;wzShow(n)}
+wzShow(1,true);
+
 let size=22;function fs(d){size=Math.min(32,Math.max(18,size+d*2));document.documentElement.style.setProperty('--fs',size+'px')}
 render();
 </script>
